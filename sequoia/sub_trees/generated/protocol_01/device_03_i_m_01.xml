@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="wait_for_motor_zsw1_0_ready_for_servo_on">
+  <BehaviorTree ID="wait_for_motor_zsw1_0_ready_for_servo_on">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_0_ready_for_servo_on" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_0_ready_for_servo_on">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_0_ready_for_servo_on" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_1_ready_for_operation">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_1_ready_for_operation" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_1_ready_for_operation">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_1_ready_for_operation" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_2_operation_enabled">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_2_operation_enabled" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_2_operation_enabled">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_2_operation_enabled" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_3_fault_present">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_3_fault_present" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_3_fault_present">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_3_fault_present" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_4_off2_inactive">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_4_off2_inactive" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_4_off2_inactive">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_4_off2_inactive" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_5_off3_inactive">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_5_off3_inactive" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_5_off3_inactive">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_5_off3_inactive" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_6_switching_on_inhibited_active">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_6_switching_on_inhibited_active" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_6_switching_on_inhibited_active">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_6_switching_on_inhibited_active" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_7_alarm_present">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_7_alarm_present" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_7_alarm_present">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_7_alarm_present" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_8_speed_setpoint">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_8_speed_setpoint" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_8_speed_setpoint">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_8_speed_setpoint" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_9_control_requested">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_9_control_requested" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_9_control_requested">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_9_control_requested" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_10_f_or_n_comparison_value_reached">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_10_f_or_n_comparison_value_reached" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_10_f_or_n_comparison_value_reached">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_10_f_or_n_comparison_value_reached" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_11_i_m_p_limit_rechead">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_11_i_m_p_limit_rechead" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_11_i_m_p_limit_rechead">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_11_i_m_p_limit_rechead" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_12_open_the_holding_brake">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_12_open_the_holding_brake" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_12_open_the_holding_brake">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_12_open_the_holding_brake" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_13_no_motor_overtemperature_alarm">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_13_no_motor_overtemperature_alarm" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_13_no_motor_overtemperature_alarm">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_13_no_motor_overtemperature_alarm" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_14_motor_rotation">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_14_motor_rotation" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_14_motor_rotation">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_14_motor_rotation" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_motor_zsw1_15_no_alarm_termal_overload_power_unit">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_motor_zsw1/wait_for_state" digital_input_names="motor_zsw1_15_no_alarm_termal_overload_power_unit" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_motor_zsw1_15_no_alarm_termal_overload_power_unit">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_motor_zsw1/states" input_names="motor_zsw1_15_no_alarm_termal_overload_power_unit" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

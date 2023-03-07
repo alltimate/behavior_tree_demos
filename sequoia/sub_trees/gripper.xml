@@ -1,0 +1,299 @@
+<root BTCPP_format="4"  main_tree_to_execute="OpenGripper">
+  
+    <include path="generated/protocol_01/device_01_i_m_02.xml"/>
+
+    <include path="generated/protocol_01/device_01_o_m_01.xml"/>
+    <include path="generated/protocol_01/device_01_o_m_03.xml"/>
+    
+    <include path="generated/protocol_01/device_03_i_m_01.xml"/>
+    <include path="generated/protocol_01/device_03_o_m_01.xml"/>
+    
+    
+    <BehaviorTree ID="OpenGripperAndWaitOpened">
+        <Sequence>
+            <SubTree ID="OpenGripper"/>
+            <SubTree ID="WaitForGripperOpened"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="CloseGripperAndWaitClosed">
+        <Sequence>
+            <SubTree ID="CloseGripper"/>
+            <SubTree ID="WaitForGripperClosed"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="OpenGripper">
+        <Sequence>
+            <SubTree ID="IsRotaryInPosition01"/>
+            <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" 
+            digital_output_names="io_device.01.do_module_01.valve_qm6.open_gripper;
+                                    io_device.01.do_module_01.valve_qm6.close_gripper"
+            states="1;0"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="CloseGripper">
+        <Sequence>
+            <SubTree ID="IsRotaryInPosition01"/>
+            <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" 
+            digital_output_names="io_device.01.do_module_01.valve_qm6.open_gripper;
+                                    io_device.01.do_module_01.valve_qm6.close_gripper"
+            states="0;1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="IsGripperOpened">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/states" input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_01.openned;io_device.01.di_module_02.gripper_actuator_box_01_ch_02.closed" desired_states="1;0" comparision_methods="eq"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsGripperClosed">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/states" input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_01.openned;io_device.01.di_module_02.gripper_actuator_box_01_ch_02.closed" desired_states="0;1" comparision_methods="eq"/>
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForGripperOpened">
+        <!--<Timeout msec="10">-->
+        <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/wait_for_state" 
+            digital_input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_01.openned;
+                                 io_device.01.di_module_02.gripper_actuator_box_01_ch_02.closed" 
+            states="1;0" connection_timeout_ms="200"/>
+        <!--</Timeout >    -->
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForGripperClosed">
+        <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/wait_for_state" 
+            digital_input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_01.openned;
+                                 io_device.01.di_module_02.gripper_actuator_box_01_ch_02.closed" 
+            states="0;1" connection_timeout_ms="200"/>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateGripperIO01">
+            <SubTree ID="set_valve_qm8_activate_io_01"  state="1"/>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGripperIO01">
+            <SubTree ID="set_valve_qm8_activate_io_01"  state="0"/>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateGripperIO02">
+        <SubTree ID="set_valve_qm8_activate_io_02"  state="1"/>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGripperIO02">
+            <SubTree ID="set_valve_qm8_activate_io_02"  state="0"/>
+    </BehaviorTree>
+    
+    
+        
+    <BehaviorTree ID="ActivateGripperCameraGuide">
+        <SubTree ID="set_gripper_activate_guide"  state="1"/>
+    </BehaviorTree>
+    <BehaviorTree ID="DectivateGripperCameraGuide">
+            <SubTree ID="set_gripper_activate_guide"  state="0"/>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateGripperIO03AndWaitActivated">
+        <Sequence>
+            <SubTree ID="ActivateGripperIO03"/>
+            <SubTree ID="WaitForGripperIO03Activated"/>
+      </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGripperIO03AndWaitDeactivated">
+        <Sequence>
+            <SubTree ID="DeactivateGripperIO03"/>
+            <SubTree ID="WaitForGripperIO03Deactivated"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateGripperIO03">
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" 
+            digital_output_names="io_device.01.do_module_01.valve_qm7.activate_io03;
+                                  io_device.01.do_module_01.valve_qm7.deactivate_io03" 
+            states="1;0"/>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGripperIO03">
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" 
+            digital_output_names="io_device.01.do_module_01.valve_qm7.activate_io03;
+                                  io_device.01.do_module_01.valve_qm7.deactivate_io03" 
+            states="0;1"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsGripperIO03Activated">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/states" input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_03.io03_actived;io_device.01.di_module_02.gripper_actuator_box_01_ch_04.io03_deactived" desired_states="1;0" comparision_methods="eq"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsGripperIO03Deactivated">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/states" input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_03.io03_actived;io_device.01.di_module_02.gripper_actuator_box_01_ch_04.io03_deactived" desired_states="0;1" comparision_methods="eq"/>
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForGripperIO03Activated">
+        <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/wait_for_state" 
+              digital_input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_03.io03_actived;
+                                   io_device.01.di_module_02.gripper_actuator_box_01_ch_04.io03_deactived" 
+              states="1;0" connection_timeout_ms="200"/>
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForGripperIO03Deactivated">
+        <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/wait_for_state" 
+              digital_input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_03.io03_actived;
+                                   io_device.01.di_module_02.gripper_actuator_box_01_ch_04.io03_deactived" 
+              states="0;1" connection_timeout_ms="200"/>
+    </BehaviorTree>
+  
+  
+  
+    
+
+    
+    <BehaviorTree ID="MoveRotaryToPosition01">
+        <Sequence>
+            <SubTree ID="IsGripperIO03Deactivated"/>
+            <AdjustJointsInitializationSettings
+                service_name="/workcell/controller/motor_trajectory_controller/adjust_initialization_settings"
+                connection_timeout_ms="500"
+                joint_names="joint_rotary;"
+                activate_initialization="TRUE" />
+            <PlanRotaryTrajectory
+                service_name="/workcell/gripper/plan_rotary_trajectory"
+                connection_timeout_ms="500"
+                starting_angle="0.0"
+                starting_angle_in_degree="90"
+                stopping_angle_in_degree="0"
+                number_of_stitches="10"
+                enable_sewing="TRUE"
+                trajectory_points_per_stitch="360"
+                joint_name="joint_rotary"
+                speed_in_rpm="5"
+                joints_trajectory="joints_trajectory"
+            />
+            <FollowJointTrajectory
+                joints_trajectory="{joints_trajectory}"
+                server_name="/workcell/controller/motor_trajectory_controller/follow_joint_trajectory"
+                single_step="FALSE"
+                connection_timeout_ms="500"
+            />
+            <AdjustJointsInitializationSettings
+                service_name="/workcell/controller/motor_trajectory_controller/adjust_initialization_settings"
+                connection_timeout_ms="500"
+                joint_names="joint_rotary;"
+                activate_initialization="FALSE"
+            />
+            <SubTree ID="IsRotaryInPosition01"/>
+        </Sequence>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="MoveRotaryToPosition02FromPosition01">
+        <Sequence >
+            <SubTree ID="IsRotaryInPosition01"/>
+            <SubTree ID="IsGripperIO03Deactivated"/>
+            <PlanRotaryTrajectory
+                service_name="/workcell/gripper/plan_rotary_trajectory"
+                connection_timeout_ms="500"
+                starting_angle="0.0"
+                starting_angle_in_degree="0.0"
+                stopping_angle_in_degree="335.0"
+                number_of_stitches="0"
+                enable_sewing="TRUE"
+                trajectory_points_per_stitch="360"
+                joint_name="joint_rotary"
+                speed_in_rpm="5"
+                joints_trajectory="joints_trajectory"
+            />
+            <FollowJointTrajectory
+                joints_trajectory="{joints_trajectory}"
+                server_name="/workcell/controller/motor_trajectory_controller/follow_joint_trajectory"
+                single_step="FALSE"
+                connection_timeout_ms="500"
+                start_delay_seconds="0"
+            />
+            <SubTree ID="IsRotaryInPosition02"/>
+        </Sequence>
+    </BehaviorTree>
+     
+    <BehaviorTree ID="WaitForRotaryInPosition02">
+      <SubTree ID="wait_for_gripper_actuator_box_01_ch_06_rotary_in_position02" states="1"/>
+    </BehaviorTree>
+  
+    <BehaviorTree ID="WaitForRotaryInPosition01">
+        
+        <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_02/wait_for_state" digital_input_names="io_device.01.di_module_02.gripper_actuator_box_01_ch_05.rotary_in_position01" states="1" connection_timeout_ms="200"/>
+        
+    </BehaviorTree>
+    
+  
+    <BehaviorTree ID="IsRotaryInPosition02">
+        <SubTree ID="is_gripper_actuator_box_01_ch_06_rotary_in_position02"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsRotaryInPosition01">
+        <SubTree ID="is_gripper_actuator_box_01_ch_05_rotary_in_position01"/>
+    </BehaviorTree>
+    
+    
+    <BehaviorTree ID="CatchPlasticStartFromRotaryPosition01">
+        <Sequence>
+            <SubTree ID="IsRotaryInPosition01"/>
+            <SubTree ID="ActivateGripperIO01"/>
+            <SubTree ID="MoveRotaryToPosition02FromPosition01"/>
+            <SubTree ID="ActivateGripperIO03AndWaitActivated"/>
+            <SubTree ID="DeactivateGripperIO03AndWaitDeactivated"/>
+            <SubTree ID="DeactivateGripperIO01"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="CutPlasticStartFromRotaryPosition01">
+        <Sequence >
+            <SubTree ID="IsRotaryInPosition01"/>
+            <SubTree ID="MoveRotaryToPosition02FromPosition01"/>
+            <SubTree ID="ActivateGripperIO03AndWaitActivated"/>
+            <SubTree ID="ActivateGripperIO01"/>
+            <SubTree ID="DeactivateGripperIO03AndWaitDeactivated"/>
+            <SubTree ID="DeactivateGripperIO01"/>
+        </Sequence>
+    </BehaviorTree>
+
+    
+    <BehaviorTree ID="ReleaseRotaryDrive">
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_0_off1_edge" states="0"/>
+    </BehaviorTree>
+    <BehaviorTree ID="EnableRotaryDrive">
+        <Sequence>
+            <SubTree ID="ReleaseRotaryDrive"/> <!-- enable needs rising Edge -->
+            <SubTree ID="AcknowledgeRotaryDriveUntilSuccessful"/>
+            <Delay delay_msec="200">
+                <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_0_off1_edge" states="1"/>
+            </Delay>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="AcknowledgeRotaryDrive">
+        <Sequence>
+            <Delay delay_msec="100">
+                <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_7_acknowledge_edge" states="0"/>
+            </Delay>
+            <Delay delay_msec="100">
+                <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_7_acknowledge_edge" states="1"/>
+            </Delay>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="AcknowledgeRotaryDriveUntilSuccessful">
+        <Sequence>
+            <RetryUntilSuccessful num_attempts="-1">
+                <Sequence>
+                    <SubTree ID="AcknowledgeRotaryDrive"/>
+                    <SubTree ID="EvaluateRotaryDriveNoFault"/>
+                </Sequence>
+            </RetryUntilSuccessful>         
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="EvaluateRotaryDriveNoFault">
+        <SubTree ID="is_motor_zsw1_0_ready_for_servo_on"/>
+                <!-- <Sequence >
+                <EvaluateDigitalInput
+                        topic_name="/workcell_irt_kr22r1610v2/controller/digital_input_rotary_zsw1/states"
+                        input_names="digital_input_rotary_zsw1;"
+                        desired_states="0"
+                        comparision_methods="eq" />
+                </Sequence> -->
+        </BehaviorTree>
+    
+    <BehaviorTree ID="LoadRotaryController">
+        <LoadController
+            service_name="/controller_manager/load_controller"
+            connection_timeout_ms="500"
+            request.name="/workcell/controller/motor_trajectory_controller"
+        />
+    </BehaviorTree>
+    <BehaviorTree ID="SwitchRotaryController">
+        <SwitchController
+            service_name="/controller_manager/switch_controller"
+            connection_timeout_ms="500"
+            request.start_controllers="/workcell/controller/motor_trajectory_controller;" 
+            request.stop_controllers="/workcell/controller/position_trajectory_controller;" 
+            request.strictness="1"
+        />
+    </BehaviorTree>
+</root>

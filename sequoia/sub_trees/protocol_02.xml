@@ -1,0 +1,11 @@
+<root BTCPP_format="4" main_tree_to_execute="ActivateProtocol02Connection">
+    <include path="generated/protocol_01/device_01_o_m_03.xml"/>
+    <BehaviorTree ID="ActivateProtocol02Connection">
+        <Sequence>
+            <SubTree ID="set_protocol_02_server_status" state="0" />
+            <Delay delay_msec="5000">
+                <SubTree ID="set_protocol_02_server_status" state="1" />
+            </Delay>
+        </Sequence>
+    </BehaviorTree>
+</root>

@@ -1,0 +1,154 @@
+<root BTCPP_format="4" main_tree_to_execute="InitializeAllCoordinates">
+    <include path="projector_01_product01_fixture01.xml"/>
+    <include path="projector_02_product01_fixture01.xml"/>
+    <include path="projector_01_product02_fixture01.xml"/>
+    <include path="projector_02_product02_fixture01.xml"/>
+    <include path="projector_01_product01_fixture02.xml"/>
+    <include path="projector_02_product01_fixture02.xml"/>
+    <include path="projector_01_product02_fixture02.xml"/>
+    <include path="projector_02_product02_fixture02.xml"/>
+    <BehaviorTree ID="InitializeAllCoordinates">
+        <Sequence >
+            <SubTree ID="InitializeCoordFixture01Product01"/>
+            <SubTree ID="InitializeCoordFixture01Product02"/>
+            <SubTree ID="InitializeCoordFixture02Product01"/>
+            <SubTree ID="InitializeCoordFixture02Product02"/>
+        </Sequence>
+    </BehaviorTree>
+    
+   
+    <BehaviorTree ID="InitializeCoordFixture01Product01">
+        <Sequence>       
+            <Parallel>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysLeftASideProduct01"/>
+                    <SubTree ID="LoadAllFixture01Product01LeftDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture01Product01LeftDxfs"/>
+                    <SubTree ID="StartProjectionLeftGuideFixture01Product01"/>
+                </Sequence>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysRightASideProduct01"/>
+                    <SubTree ID="LoadAllFixture01Product01RightDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture01Product01RightDxfs"/>
+                    <SubTree ID="StartProjectionRightGuideFixture01Product01"/>
+                </Sequence>               
+            </Parallel>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="InitializeCoordFixture01Product02">
+        <Sequence>       
+            <Parallel>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysLeftASideProduct02"/>
+                    <SubTree ID="LoadAllFixture01Product02LeftDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture01Product02LeftDxfs"/>
+                    <SubTree ID="StartProjectionLeftGuideFixture01Product02"/>
+                </Sequence>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysRightASideProduct02"/>
+                    <SubTree ID="LoadAllFixture01Product02RightDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture01Product02RightDxfs"/>
+                    <SubTree ID="StartProjectionRightGuideFixture01Product02"/>
+                </Sequence>
+            </Parallel>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="InitializeCoordFixture02Product01">
+        <Sequence>       
+            <Parallel>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysLeftBSideProduct01"/>
+                    <SubTree ID="LoadAllFixture02Product01LeftDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture02Product01LeftDxfs"/>
+                    <SubTree ID="StartProjectionLeftGuideFixture02Product01"/>
+                </Sequence>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysRightBSideProduct01"/>
+                    <SubTree ID="LoadAllFixture02Product01RightDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture02Product01RightDxfs"/>
+                    <SubTree ID="StartProjectionRightGuideFixture02Product01"/>
+                </Sequence>               
+            </Parallel>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="InitializeCoordFixture02Product02">
+        <Sequence>       
+            <Parallel>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysLeftBSideProduct02"/>
+                    <SubTree ID="LoadAllFixture02Product02LeftDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture02Product02LeftDxfs"/>
+                    <SubTree ID="StartProjectionLeftGuideFixture02Product02"/>
+                </Sequence>
+                <Sequence>
+                    <SubTree ID="ActivateCoordSysRightBSideProduct02"/>
+                    <SubTree ID="LoadAllFixture02Product02RightDxfs"/>
+                    <Wait wait_duration_second="10"/>
+                    <SubTree ID="HideAllFixture02Product02RightDxfs"/>
+                    <SubTree ID="StartProjectionRightGuideFixture02Product02"/>
+                </Sequence>
+            </Parallel>
+        </Sequence>
+    </BehaviorTree>
+
+    
+    <BehaviorTree ID="InitCoordSysLeft">
+        <InitCoordinateSystem
+             service_name="/workcell/projector_01/guide_node/init_coordinate_system"
+             connection_timeout_ms="500"
+             request.cs_name="{cs_name}"
+             response.success="{success}"
+         />
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysLeftASideProduct02">
+        <SubTree ID="InitCoordSysLeft"
+            cs_name="a_product02"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysLeftBSideProduct02">
+        <SubTree ID="InitCoordSysLeft"
+            cs_name="b_product02"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysLeftASideProduct01">
+        <SubTree ID="InitCoordSysLeft"
+            cs_name="a_product01"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysLeftBSideProduct01">
+        <SubTree ID="InitCoordSysLeft"
+            cs_name="b_product01"/>
+     </BehaviorTree>
+    
+    
+     <BehaviorTree ID="InitCoordSysRight">
+        <InitCoordinateSystem
+             service_name="/workcell/projector_02/guide_node/init_coordinate_system"
+             connection_timeout_ms="500"
+             request.cs_name="{cs_name}"
+             response.success="{success}"
+         />
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysRightASideProduct02">
+        <SubTree ID="InitCoordSysRight"
+            cs_name="a_product02"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysRightBSideProduct02">
+        <SubTree ID="InitCoordSysRight"
+            cs_name="b_product02"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysRightASideProduct01">
+        <SubTree ID="InitCoordSysRight"
+            cs_name="a_product01"/>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateCoordSysRightBSideProduct01">
+        <SubTree ID="InitCoordSysRight"
+            cs_name="b_product01"/>
+     </BehaviorTree>
+
+</root>

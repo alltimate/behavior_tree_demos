@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_valve_qm15_lock_workobject_bolt">
+  
+  <BehaviorTree ID="set_valve_qm15_lock_workobject_bolt">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_02/commands" digital_output_names="io_device.01.do_module_02.valve_qm15.lock_workobject_bolt" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm15_unlock_workobject_bolt">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_02/commands" digital_output_names="io_device.01.do_module_02.valve_qm15.unlock_workobject_bolt" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

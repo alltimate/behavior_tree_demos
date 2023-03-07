@@ -1,0 +1,70 @@
+<root BTCPP_format="4" main_tree_to_execute="DoAutomaticProcess">
+    <include path="generated/protocol_01/device_01_i_m_04.xml"/>
+    <include path="magnet_process.xml"/>
+    <include path="workobject.xml"/>
+    <include path="gripping_process.xml"/>
+    
+    <BehaviorTree ID="DoAutomaticProcess">
+        <Sequence >
+            
+            <RetryUntilSuccessful num_attempts="-1">
+                <Sequence >
+                    <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+                    <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+                    <SubTree ID="DoMagnetProcess"/>
+                    <SubTree ID="WaitForStartButtonPressed"/>
+                    <SubTree ID="MoveFixture01ToLoadArea"/>
+                    <SubTree ID="DoGrippingProcessWithoutCamera"/>
+                    <Parallel>
+                        <Sequence >
+                            <SubTree ID="RunDepartOnlyOverWorkObjectWithoutStartingEGM"/>
+                        </Sequence>
+                        <Sequence >
+                            <SubTree ID="WaitForStartButtonPressed"/>
+                            <SubTree ID="MoveFixture02ToLoadArea"/>
+                            <SubTree ID="DeactivateMagnetSectionAll"/>
+                        </Sequence>
+                    
+                    </Parallel>
+                    <AlwaysFailure/>
+                </Sequence>
+            </RetryUntilSuccessful>
+        </Sequence>
+   </BehaviorTree>
+   <BehaviorTree ID="WaitForStartButtonPressed">
+        <Sequence>
+            <RetryUntilSuccessful num_attempts="-1">
+                <ReactiveFallback>
+                    <SubTree ID="IsLeftButtonPressed" />
+                    <SubTree ID="IsRightButtonPressed" />
+                </ReactiveFallback>
+            </RetryUntilSuccessful>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForReleaseAllMagnetKeyPressed">
+        <Sequence>
+            <!-- <RetryUntilSuccessful num_attempts="-1">
+                <SubTree ID="is_hmi02_release_all_magnets_pushbutton_is_pressed" state="1"/>
+            </RetryUntilSuccessful> -->
+            <WaitForDigitalInput server_name="/workcell/controller/release_all_magnets_pushbutton_controller/wait_for_state" digital_input_names="io_device.device_02.i_m_01.hmi02.release_all_magnets_pushbutton.is_pressed" states="1" connection_timeout_ms="200"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="IsLeftButtonPressed">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_d_device_01_i_m_04/states" 
+                input_names="io_device.device_01.i_m_04.left_button_ch_01.is_pressed;
+                            io_device.device_01.i_m_04.left_button_ch_02.is_pressed" 
+                desired_states="1;1" 
+                comparision_methods="eq"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsRightButtonPressed">
+        <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_d_device_01_i_m_04/states" 
+                input_names="io_device.device_01.i_m_04.right_button_ch_01.is_pressed;
+                            io_device.device_01.i_m_04.right_button_ch_02.is_pressed" 
+                desired_states="1;1" 
+                comparision_methods="eq"/>
+    </BehaviorTree>
+
+    
+
+    </root>

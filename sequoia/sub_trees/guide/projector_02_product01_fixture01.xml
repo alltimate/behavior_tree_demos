@@ -1,0 +1,200 @@
+<root BTCPP_format="4" main_tree_to_execute="StartProjection02GuideFixture01Product01">   
+
+    
+    <BehaviorTree ID="LoadDxf02Fixture01Product01Section5">
+        <SubTree ID="LoadDxfToZGuide02"
+            dxf_file_name="fixture01/product01/projector_02/section_5"
+            result="{result}"
+        />
+    </BehaviorTree>
+    <BehaviorTree ID="LoadDxf02Fixture01Product01Dot">
+        <SubTree ID="LoadDxfToZGuide02"
+            dxf_file_name="fixture01/product01/projector_02/dot"
+            result="{result}"
+        />
+    </BehaviorTree>
+    <BehaviorTree ID="LoadDxf02Fixture01Product01Section6">
+        <SubTree ID="LoadDxfToZGuide02"
+            dxf_file_name="fixture01/product01/projector_02/section_6"
+            result="{result}"
+        />
+    </BehaviorTree>
+    <BehaviorTree ID="LoadDxf02Fixture01Product01Section7">
+        <SubTree ID="LoadDxfToZGuide02"
+            dxf_file_name="fixture01/product01/projector_02/section_7"
+            result="{result}"
+        />
+    </BehaviorTree>
+    <BehaviorTree ID="LoadDxf02Fixture01Product01Section8">
+        <SubTree ID="LoadDxfToZGuide02"
+            dxf_file_name="fixture01/product01/projector_02/section_8"
+            result="{result}"
+        />
+    </BehaviorTree>
+    
+  
+    <BehaviorTree ID="LoadDxfToZGuide">
+        <LoadDxf
+            service_name="{service_name}"
+            connection_timeout_ms="500"
+            request.dxf_file_name="{dxf_file_name}"
+            request.directory_path="/data/workcell/guide"
+            response.success="{result}"
+        />
+    </BehaviorTree>
+     <BehaviorTree ID="LoadDxfToZGuide02">
+        
+        <SubTree ID="LoadDxfToZGuide"
+            service_name="/workcell/projector_02/dxf/load_dxf" 
+            dxf_file_name="{dxf_file_name}"
+            result="{result}"
+        />
+    </BehaviorTree>
+    
+     <BehaviorTree ID="LoadAllFixture01Product0102Dxfs">
+        <Sequence >
+            <SubTree ID="LoadDxf02Fixture01Product01Dot"/>
+            <SubTree ID="LoadDxf02Fixture01Product01Section5"/>
+            <SubTree ID="LoadDxf02Fixture01Product01Section6"/>
+            <SubTree ID="LoadDxf02Fixture01Product01Section7"/>
+            <SubTree ID="LoadDxf02Fixture01Product01Section8"/>
+        </Sequence >
+    </BehaviorTree>
+    
+    <BehaviorTree ID="StartProjection02GuideFixture01Product01">
+        <Sequence >
+            <TriggerStart
+                service_name="/workcell/projector_02/guide_node/projection_start"
+                connection_timeout_ms="500"
+                response.success="{success}"
+            />
+
+         </Sequence >
+    </BehaviorTree>
+    
+     <BehaviorTree ID="HideDxf02Fixture01Product01Section5">
+        <Sequence >
+            <SubTree ID="HideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_5"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="HideDxf02Fixture01Product01Section6">
+        <Sequence >
+            <SubTree ID="HideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_6"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="HideDxf02Fixture01Product01Section7">
+        <Sequence >
+            <SubTree ID="HideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_7"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="HideDxf02Fixture01Product01Section8">
+        <Sequence >
+            <SubTree ID="HideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_8"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+
+
+     <BehaviorTree ID="HideDxfOfZGuide">
+        <HideProjection
+            service_name="{service_name}"
+            connection_timeout_ms="500"
+            request.projection_group="{projection_group}"
+            request.figure_type = "0"
+        />
+    </BehaviorTree>
+     <BehaviorTree ID="HideDxfOfZGuide02">
+        <Sequence >
+            <SubTree ID="HideDxfOfZGuide"
+                service_name="/workcell/projector_02/guide_node/hide_projection_element"
+                projection_group="{projection_group}"
+            />
+            
+        </Sequence >
+    </BehaviorTree>
+    
+    <BehaviorTree ID="HideAllFixture01Product0102Dxfs">
+        <Sequence >
+            <SubTree ID="HideDxf02Fixture01Product01Section5"/>
+            <SubTree ID="HideDxf02Fixture01Product01Section6"/>
+            <SubTree ID="HideDxf02Fixture01Product01Section7"/>
+            <SubTree ID="HideDxf02Fixture01Product01Section8"/>
+        </Sequence >
+    </BehaviorTree>
+     
+     <BehaviorTree ID="UnHideDxf02Fixture01Product01Section5">
+        <Sequence >
+            <SubTree ID="UnHideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_5"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="UnHideDxf02Fixture01Product01Section6">
+         <Sequence >
+            <SubTree ID="UnHideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_6"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="UnHideDxf02Fixture01Product01Section7">
+        <Sequence >
+            <SubTree ID="UnHideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_7"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+     <BehaviorTree ID="UnHideDxf02Fixture01Product01Section8">
+        <Sequence >
+            <SubTree ID="UnHideDxfOfZGuide02"
+                projection_group="fixture01/product01/projector_02/section_8"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+     </BehaviorTree>
+
+
+     <BehaviorTree ID="UnHideDxfOfZGuide">
+        <UnhideProjection
+            service_name="{service_name}"
+            connection_timeout_ms="500"
+            request.projection_group="{projection_group}"
+            request.figure_type = "0"
+        />
+    </BehaviorTree>
+     <BehaviorTree ID="UnHideDxfOfZGuide02">
+        <Sequence >
+            <SubTree ID="UnHideDxfOfZGuide"
+                service_name="/workcell/projector_02/guide_node/unhide_projection_element"
+                projection_group="{projection_group}"
+            />
+            <SubTree ID="StartProjection02GuideFixture01Product01"/>
+        </Sequence >
+    </BehaviorTree>
+     
+     <BehaviorTree ID="StopProjection02GuideFixture01Product01">
+         <TriggerStop
+             service_name="/workcell/projector_02/guide_node/projection_stop"
+             connection_timeout_ms="500"
+             response.success="{success}"
+         />
+
+     </BehaviorTree>
+     
+
+
+
+</root>

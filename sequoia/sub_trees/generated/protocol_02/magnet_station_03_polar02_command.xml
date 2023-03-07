@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_magnet_station_fixture01_station_03_polar02_command_product02_section_06_activate">
+  <BehaviorTree ID="set_magnet_station_fixture01_station_03_polar02_command_product02_section_06_activate">
+    <Sequence>
+      <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar02_command/magnet_station_fixture01_station_03_polar02_command_product02_section_06_activate" is_latched="1" data="{state}"/>
+      <Publish_std_msgs_Int16 topic_name="/workcell/device_05/analog_inputs_magnet_station_03_polar02_status/magnet_station_fixture02_station_03_polar02_status_system_magnet_in_unit" is_statefull="1" data="0"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_activated_magnet_station_fixture01_station_03_polar02_command_product02_section_06_activate">
+    <Sequence>
+      <IfThenElse>
+        <Subscribe_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar02_command/magnet_station_fixture01_station_03_polar02_command_product02_section_06_activate" is_statefull="1" data="{data}"/>
+        <Precondition if="data==1" else="FAILURE">
+          <AlwaysSuccess/>
+        </Precondition>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </Sequence>
+  </BehaviorTree>
+</root>

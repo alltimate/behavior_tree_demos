@@ -1,0 +1,112 @@
+<root BTCPP_format="4" main_tree_to_execute="ActivateGuideSection1">
+    <include path="projector_01_product01_fixture01.xml"/>
+    <include path="projector_02_product01_fixture01.xml"/>
+    <include path="projector_01_product02_fixture01.xml"/>
+    <include path="projector_02_product02_fixture01.xml"/>
+    <include path="projector_01_product01_fixture02.xml"/>
+    <include path="projector_02_product01_fixture02.xml"/>
+    <include path="projector_01_product02_fixture02.xml"/>
+    <include path="projector_02_product02_fixture02.xml"/>
+    <include path="../workobject.xml"/>
+
+    <BehaviorTree ID="ActivateGuideSection1">
+       <IfThenElse>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+        <SubTree ID="ActivateGuideSection1InFixture01" />
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+          <SubTree ID="ActivateGuideSection1InFixture02" />
+          <AlwaysFailure/>
+        </IfThenElse>
+      </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateGuideSection1InFixture01">
+        <IfThenElse>
+            <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+            <SubTree ID="ActivateGuideFixture01Product01Section1" />
+            <SubTree ID="ActivateGuideFixture01Product02Section1" />
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateGuideSection1InFixture02">
+        <IfThenElse>
+            <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+            <SubTree ID="ActivateGuideFixture02Product01Section1" />
+            <SubTree ID="ActivateGuideFixture02Product02Section1" />
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateGuideFixture01Product01Section1">
+        <Sequence>
+            <SubTree ID="UnHideDxfLeftFixture01Product01Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateGuideFixture01Product02Section1">
+        <Sequence>
+            <SubTree ID="UnHideDxfLeftFixture01Product02Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateGuideFixture02Product01Section1">
+        <Sequence>
+            <SubTree ID="UnHideDxfLeftFixture02Product01Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateGuideFixture02Product02Section1">
+        <Sequence>
+            <SubTree ID="UnHideDxfLeftFixture02Product02Section1"/>
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="DeactivateGuideSection1">
+       <IfThenElse>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+        <SubTree ID="DeactivateGuideSection1InFixture01" />
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+          <SubTree ID="DeactivateGuideSection1InFixture02" />
+          <AlwaysFailure/>
+        </IfThenElse>
+      </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="DeactivateGuideSection1InFixture01">
+        <IfThenElse>
+            <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+            <SubTree ID="DeactivateGuideFixture01Product01Section1" />
+            <SubTree ID="DeactivateGuideFixture01Product02Section1" />
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="DeactivateGuideSection1InFixture02">
+        <IfThenElse>
+            <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+            <SubTree ID="DeactivateGuideFixture02Product01Section1" />
+            <SubTree ID="DeactivateGuideFixture02Product02Section1" />
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="DeactivateGuideFixture01Product01Section1">
+        <Sequence>
+            <SubTree ID="HideDxfLeftFixture01Product01Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGuideFixture01Product02Section1">
+        <Sequence>
+            <SubTree ID="HideDxfLeftFixture01Product02Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGuideFixture02Product01Section1">
+        <Sequence>
+            <SubTree ID="HideDxfLeftFixture02Product01Section1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGuideFixture02Product02Section1">
+        <Sequence>
+            <SubTree ID="HideDxfLeftFixture02Product02Section1"/>
+        </Sequence>
+    </BehaviorTree>
+
+    
+</root>

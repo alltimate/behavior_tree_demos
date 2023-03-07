@@ -1,0 +1,279 @@
+<root  BTCPP_format="4"   main_tree_to_execute="PlanAndFollowPath">
+    <include path="position_controllers.xml"/>
+
+    <BehaviorTree ID="PlanDummy">
+        <Sequence>
+            <SubTree ID="PlanPathJointsWithMoreFreedom"
+                 path_file_name="/data/workcell/paths/approach/cartesian.txt"
+                 frame_id="/work_object"
+                 joints_trajectory="{joints_trajectory}"
+             />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PlanAndFollowSewingPath">
+        <Sequence>
+            <SubTree ID="PlanPathJointsWithNoFreedom"
+                 path_file_name="/data/workcell/paths/path.txt"
+                 frame_id="/work_object"
+                 joints_trajectory="{joints_trajectory}"
+             />
+             <SaveTrajectory
+                    saved_trajectory_file_name="/data/workcell/paths/path.txt.yaml"
+                    saved_joints_trajectory="{joints_trajectory}"
+                />
+             <SmoothTrajectory
+                         joints_trajectory="{joints_trajectory}"
+                         time_delay="0.1"
+                         time_delay_start="1"
+                         time_delay_end="1"
+                         start_ramp_number_of_points="30"
+                         end_ramp_number_of_points="30"
+                         smooth_joints_trajectory = "smooth_joints_trajectory" />
+
+            <SaveTrajectory
+                    saved_trajectory_file_name="/data/workcell/paths/path_smooth.txt.yaml"
+                    saved_joints_trajectory="{smooth_joints_trajectory}"
+            />
+                
+                <SubTree ID="FollowJointTrajectory"
+                   joints_trajectory="{smooth_joints_trajectory}"
+               />
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="PlanAndFollowSewingPathMergedRotary">
+        <Sequence>
+            <SubTree ID="PlanPathJointsWithNoFreedom"
+                path_file_name="/data/workcell/paths/path.txt"
+                frame_id="/work_object"
+                joints_trajectory="{joints_trajectory}"
+             />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/path.txt.yaml"
+                saved_joints_trajectory="{joints_trajectory}"
+            />
+            <PlanRotaryTrajectory
+                service_name="/workcell/gripper/plan_rotary_trajectory"
+                connection_timeout_ms="500"
+                starting_angle="0.0"
+                starting_angle_in_degree="90.0"
+                stopping_angle_in_degree="0.0"
+                number_of_stitches="376"
+                enable_sewing="TRUE"
+                trajectory_points_per_stitch="1"
+                joint_name="joint_rotary"
+                speed_in_rpm="600"
+                joints_trajectory="tools_trajectory"
+            />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/rotary.yaml"
+                saved_joints_trajectory="{tools_trajectory}"
+            />
+            <MergedTrajectories
+                first_joints_trajectory="{joints_trajectory}"
+                second_joints_trajectory="{tools_trajectory}"
+                use_second_trajectory = "1"
+                merged_joints_trajectory="merged_trajectory"
+            />
+            <SmoothTrajectory
+                joints_trajectory="{merged_trajectory}"
+                time_delay="0.1"
+                time_delay_start="2"
+                time_delay_end="2"
+                start_ramp_number_of_points="30"
+                end_ramp_number_of_points="30"
+                smooth_joints_trajectory = "smooth_joints_trajectory" 
+            />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/smooth_joints_trajectory.yaml"
+                saved_joints_trajectory="{smooth_joints_trajectory}"
+            />
+            <SubTree ID="FollowJointTrajectory"
+                   joints_trajectory="{smooth_joints_trajectory}"
+               />
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="LoadAndFollowSewingPath">
+        <Sequence>
+                <LoadTrajectory
+                   loaded_trajectory_file_name="/data/workcell/paths/path.txt.yaml"
+                   loaded_joints_trajectory="loaded_joints_trajectory"
+                 />
+                 <SubTree ID="FollowJointTrajectory"
+                    joints_trajectory="{loaded_joints_trajectory}"
+                />
+        </Sequence>
+    </BehaviorTree>
+
+     <BehaviorTree ID="LoadAndFollowSewingPathMergedRotary">
+        <Sequence>
+                <LoadTrajectory
+                   loaded_trajectory_file_name="/data/workcell/paths/path.txt.yaml"
+                   loaded_joints_trajectory="loaded_joints_trajectory"
+                 />
+                 <PlanRotaryTrajectory
+                    service_name="/workcell/gripper/plan_rotary_trajectory"
+                    connection_timeout_ms="500"
+                    starting_angle="0.0"
+                    starting_angle_in_degree="90.0"
+                    stopping_angle_in_degree="0.0"
+                    number_of_stitches="359"
+                    enable_sewing="TRUE"
+                    trajectory_points_per_stitch="1"
+                    joint_name="joint_rotary"
+                    speed_in_rpm="600"
+                    joints_trajectory="tools_trajectory"
+                />
+                 <SaveTrajectory
+                    saved_trajectory_file_name="/data/workcell/paths/rotary.yaml"
+                    saved_joints_trajectory="{tools_trajectory}"
+                />
+                 <MergedTrajectories
+                     first_joints_trajectory="{loaded_joints_trajectory}"
+                     second_joints_trajectory="{tools_trajectory}"
+                     use_second_trajectory = "TRUE"
+                     merged_joints_trajectory="merged_trajectory"
+                   />
+                 <SmoothTrajectory
+                         joints_trajectory="{merged_trajectory}"
+                         time_delay="0.1"
+                         time_delay_start="1"
+                         time_delay_end="1"
+                         start_ramp_number_of_points="30"
+                         end_ramp_number_of_points="30"
+                         smooth_joints_trajectory = "smooth_joints_trajectory" />
+                    <SaveTrajectory
+                    saved_trajectory_file_name="/data/workcell/paths/smooth_joints_trajectory.yaml"
+                    saved_joints_trajectory="{smooth_joints_trajectory}"
+                />
+               <SubTree ID="FollowJointTrajectory"
+                   joints_trajectory="{smooth_joints_trajectory}"
+               />
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="PlanAndFollowSewingPathIncludeRotary">
+        <Sequence>
+            
+            <SubTree ID="PlanPathJointsAndRotary"
+                 path_file_name="/data/workcell/paths/path.txt"
+                 frame_id="/work_object"
+                 joints_trajectory="{joints_trajectory}"
+             />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/path_rotary.yaml"
+                saved_joints_trajectory="{joints_trajectory}"
+            />
+            <SubTree ID="FollowJointTrajectory"
+               joints_trajectory="{joints_trajectory}"
+            />
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="LoadAndFollowSewingPathIncludeRotary">
+        <Sequence>
+                <LoadTrajectory
+                   loaded_trajectory_file_name="/data/workcell/paths/path_rotary.yaml"
+                   loaded_joints_trajectory="loaded_joints_trajectory"
+                 />
+                 <SubTree ID="FollowJointTrajectory"
+                    joints_trajectory="{loaded_joints_trajectory}"
+                 />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PlanApproachCartesianTrajectoryLeft">
+        <Sequence>
+           <SubTree ID="PlanPathJointsWithMoreFreedom"
+                path_file_name="/data/workcell/paths/approach/cartesian.txt"
+                frame_id="/work_object"
+                joints_trajectory="{joints_trajectory}"
+            />
+
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/approach/cartesian.yaml"
+                saved_joints_trajectory="{joints_trajectory}"
+            />
+
+            <SubTree ID="OptimizeTimeJointsTrajectory"
+                joints_trajectory="{joints_trajectory}"
+                optimized_joints_trajectory="{optimized_joints_trajectory}"
+            />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/approach/cartesian_optimize_time.yaml"
+                saved_joints_trajectory="{optimized_joints_trajectory}"
+            />
+            <SubTree ID="FollowJointTrajectory"
+                joints_trajectory="{optimized_joints_trajectory}"
+            />
+             
+       </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="LoadApproachCartesianTrajectoryLeft">
+        <Sequence>
+                <LoadTrajectory
+                   loaded_trajectory_file_name="/data/workcell/paths/approach/cartesian_optimize_time.yaml"
+                   loaded_joints_trajectory="loaded_joints_trajectory"
+                 />
+                 <SubTree ID="FollowJointTrajectory"
+                    joints_trajectory="{loaded_joints_trajectory}"
+                />
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="PlanDepartCartesianTrajectoryRight">
+        <Sequence>
+            <SubTree ID="PlanPathJointsWithMoreFreedom"
+                 path_file_name="/data/workcell/paths/depart/cartesian.txt"
+                 frame_id="/work_object"
+                 joints_trajectory="{joints_trajectory}"
+             />
+             <SubTree ID="OptimizeTimeJointsTrajectory"
+                 joints_trajectory="{joints_trajectory}"
+                 optimized_joints_trajectory="{optimized_joints_trajectory}"
+             />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/depart/cartesian.txt.yaml"
+                saved_joints_trajectory="{optimized_joints_trajectory}"
+            />
+            <SubTree ID="FollowJointTrajectory"
+               joints_trajectory="{optimized_joints_trajectory}"
+           />
+       </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="PlanDepartCartesianTrajectoryOverWorkObject">
+        <Sequence>
+            <SubTree ID="PlanPathJointsWithMoreFreedom"
+                 path_file_name="/data/workcell/paths/depart/cartesian_over_work_object.txt"
+                 frame_id="/work_object"
+                 joints_trajectory="{joints_trajectory}"
+             />
+             <SubTree ID="OptimizeTimeJointsTrajectory"
+                 joints_trajectory="{joints_trajectory}"
+                 optimized_joints_trajectory="{optimized_joints_trajectory}"
+             />
+            <SaveTrajectory
+                saved_trajectory_file_name="/data/workcell/paths/depart/cartesian_over_work_object.txt.yaml"
+                saved_joints_trajectory="{optimized_joints_trajectory}"
+            />
+            <SubTree ID="FollowJointTrajectory"
+               joints_trajectory="{optimized_joints_trajectory}"
+           />
+       </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="LoadDepartCartesianTrajectoryRight">
+        <Sequence>
+                <LoadTrajectory
+                   loaded_trajectory_file_name="/data/workcell/paths/depart/cartesian.txt.yaml"
+                   loaded_joints_trajectory="loaded_joints_trajectory"
+                 />
+                 <SubTree ID="FollowJointTrajectory"
+                    joints_trajectory="{loaded_joints_trajectory}"
+                />
+        </Sequence>
+    </BehaviorTree>
+   
+    
+
+</root>

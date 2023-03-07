@@ -1,0 +1,402 @@
+<root BTCPP_format="4" main_tree_to_execute="WaitForMagnetedSection8">
+    <include path="../generated/protocol_02/magnet_station_03_polar04_command.xml"/>
+    <include path="../generated/protocol_02/magnet_station_03_polar08_command.xml"/>
+    <include path="../generated/protocol_02/magnet_station_04_polar04_command.xml"/>
+    <include path="../generated/protocol_02/magnet_station_04_polar08_command.xml"/>
+    
+    <include path="../generated/protocol_02/magnet_station_03_polar04_status.xml"/>
+    <include path="../generated/protocol_02/magnet_station_03_polar08_status.xml"/>
+    <include path="../generated/protocol_02/magnet_station_04_polar04_status.xml"/>
+    <include path="../generated/protocol_02/magnet_station_04_polar08_status.xml"/>
+    
+    <BehaviorTree ID="ActivateAndWaitForMagnetedSection8">
+       <IfThenElse>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+        <SubTree ID="ActivateAndWaitForMagnetedSection8InFixture01" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+          <SubTree ID="ActivateAndWaitForMagnetedSection8InFixture02" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+          <AlwaysFailure/>
+        </IfThenElse>
+      </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateAndWaitForMagnetedSection8InFixture01">
+        <IfThenElse>
+            <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+            <SubTree ID="ActivateAndWaitForMagnetedFixture01Product01Section8AndPublishValue" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+            <SubTree ID="ActivateAndWaitForMagnetedFixture01Product02Section8AndPublishValue" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateAndWaitForMagnetedSection8InFixture02">
+        <IfThenElse>
+            <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+            <SubTree ID="ActivateAndWaitForMagnetedFixture02Product01Section8AndPublishValue" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+            <SubTree ID="ActivateAndWaitForMagnetedFixture02Product02Section8AndPublishValue" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/>
+        </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateAndWaitForMagnetedFixture01Product01Section8AndPublishValue">
+        <Sequence>
+            <SubTree ID="ActivateMagnetFixture01Product01Section8"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/> <!-- add it when deactivating-->
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+            <ReactiveSequence>
+                <IfThenElse>
+                    <SubTree ID="IsActivatedMagnetFixture01Product01Section8"/>
+                    <AlwaysSuccess/>
+                    <Sequence>
+                        <SubTree ID="PublishMagnetSection8status" data="0"/>
+                        <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                        <AlwaysFailure/>
+                    </Sequence>
+                </IfThenElse>
+                
+                <RetryUntilSuccessful num_attempts="-1">
+                    <Sequence>
+                        <Script code="threshold_sideAProduct01Section8_mbar:=500" />
+                        <SubTree ID="GetMagnetValueFixture01Product01Section8" 
+                            actual_value="{actual_value}"/>
+                        <Precondition if="actual_value<threshold_sideAProduct01Section8_mbar" else="SUCCESS">
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8status" data="1"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </Precondition>
+                    </Sequence>
+                </RetryUntilSuccessful>
+                <SubTree ID="PublishMagnetSection8status" data="2"/>
+                <Precondition if="publish_after_magneted_finsihed==1" else="SUCCESS">
+                   <ReactiveSequence>
+                        <IfThenElse>
+                            <SubTree ID="IsActivatedMagnetFixture01Product01Section8"/>
+                            <AlwaysSuccess/>
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8status" data="0"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </IfThenElse>
+                        <RetryUntilSuccessful num_attempts="-1">
+                            <Sequence>
+                                <Script code="threshold_sideAProduct01Section8_mbar:=500" />
+                                <SubTree ID="GetMagnetValueFixture01Product01Section8" 
+                                    actual_value="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <Precondition if="actual_value<threshold_sideAProduct01Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="3"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <Precondition if="actual_value>=threshold_sideAProduct01Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="2"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </RetryUntilSuccessful>
+                    </ReactiveSequence>
+                </Precondition>
+            </ReactiveSequence>
+        </Sequence>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateAndWaitForMagnetedFixture01Product02Section8AndPublishValue">
+       <Sequence>
+            <SubTree ID="ActivateMagnetFixture01Product02Section8"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/> <!-- add it when deactivating-->
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+            <ReactiveSequence>
+                <IfThenElse>
+                    <SubTree ID="IsActivatedMagnetFixture01Product02Section8"/>
+                    <AlwaysSuccess/>
+                    <Sequence>
+                        <SubTree ID="PublishMagnetSection8status" data="0"/>
+                        <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                        <AlwaysFailure/>
+                    </Sequence>
+                </IfThenElse>
+                
+                <RetryUntilSuccessful num_attempts="-1">
+                    <Sequence>
+                        <Script code="threshold_sideAProduct02Section8_mbar:=500" />
+                        <SubTree ID="GetMagnetValueFixture01Product02Section8" 
+                            actual_value="{actual_value}"/>
+                        <Precondition if="actual_value<threshold_sideAProduct02Section8_mbar" else="SUCCESS">
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8status" data="1"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </Precondition>
+                    </Sequence>
+                </RetryUntilSuccessful>
+                <SubTree ID="PublishMagnetSection8status" data="2"/>
+                <Precondition if="publish_after_magneted_finsihed==1" else="SUCCESS">
+                     <ReactiveSequence>
+                        <IfThenElse>
+                            <SubTree ID="IsActivatedMagnetFixture01Product02Section8"/>
+                            <AlwaysSuccess/>
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8status" data="0"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </IfThenElse>
+                        <RetryUntilSuccessful num_attempts="-1">
+                            <Sequence>
+                                <Script code="threshold_sideAProduct02Section8_mbar:=500" />
+                                <SubTree ID="GetMagnetValueFixture01Product02Section8" 
+                                    actual_value="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <Precondition if="actual_value<threshold_sideAProduct02Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="3"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <Precondition if="actual_value>=threshold_sideAProduct02Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="2"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </RetryUntilSuccessful>
+                    </ReactiveSequence>
+                </Precondition>
+            </ReactiveSequence>
+        </Sequence>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateAndWaitForMagnetedFixture02Product02Section8AndPublishValue">
+        <Sequence>
+            <SubTree ID="ActivateMagnetFixture02Product02Section8"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/> <!-- add it when deactivating-->
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+            <ReactiveSequence>
+                <IfThenElse>
+                    <SubTree ID="IsActivatedMagnetFixture02Product02Section8"/>
+                    <AlwaysSuccess/>
+                    <Sequence>
+                        <SubTree ID="PublishMagnetSection8status" data="0"/>
+                        <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                        <AlwaysFailure/>
+                    </Sequence>
+                </IfThenElse>
+                
+                <RetryUntilSuccessful num_attempts="-1">
+                    <Sequence>
+                        <Script code="threshold_sideBProduct02Section8_mbar:=500" />
+                        <SubTree ID="GetMagnetValueFixture02Product02Section8" 
+                            actual_value="{actual_value}"/>
+                        <Precondition if="actual_value<threshold_sideBProduct02Section8_mbar" else="SUCCESS">
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8status" data="1"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </Precondition>
+                    </Sequence>
+                </RetryUntilSuccessful>
+                <SubTree ID="PublishMagnetSection8status" data="2"/>
+                <Precondition if="publish_after_magneted_finsihed==1" else="SUCCESS">
+                    <ReactiveSequence>
+                        <IfThenElse>
+                            <SubTree ID="IsActivatedMagnetFixture02Product02Section8"/>
+                            <AlwaysSuccess/>
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8status" data="0"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </IfThenElse>
+                        <RetryUntilSuccessful num_attempts="-1">
+                            <Sequence>
+                                <Script code="threshold_sideBProduct02Section8_mbar:=500" />
+                                <SubTree ID="GetMagnetValueFixture02Product02Section8" 
+                                    actual_value="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <Precondition if="actual_value<threshold_sideBProduct02Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="3"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <Precondition if="actual_value>=threshold_sideBProduct02Section8_mbar" else="SUCCESS">
+                                    <Sequence>
+                                        <SubTree ID="PublishMagnetSection8status" data="2"/>
+                                        <AlwaysFailure/>
+                                    </Sequence>
+                                </Precondition>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </RetryUntilSuccessful>
+                    </ReactiveSequence>
+                </Precondition>
+            </ReactiveSequence>
+        </Sequence>
+    </BehaviorTree>
+    
+    <BehaviorTree ID="ActivateAndWaitForMagnetedFixture02Product01Section8AndPublishValue">
+        <Sequence>
+            <SubTree ID="ActivateMagnetFixture02Product01Section8"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/> <!-- add it when deactivating-->
+            <SubTree ID="PublishMagnetSection8status" data="0"/>
+            <ReactiveSequence>
+                <IfThenElse>
+                    <SubTree ID="IsActivatedMagnetFixture02Product01Section8"/>
+                    <AlwaysSuccess/>
+                    <Sequence>
+                        <SubTree ID="PublishMagnetSection8status" data="0"/>
+                        <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                        <AlwaysFailure/>
+                    </Sequence>
+                </IfThenElse>
+                
+                <RetryUntilSuccessful num_attempts="-1">
+                    <Sequence>
+                        <Script code="threshold_sideBProduct01Section8_mbar:=500" />
+                        <SubTree ID="GetMagnetValueFixture02Product01Section8" 
+                            actual_value="{actual_value}"/>
+                        <Precondition if="actual_value<threshold_sideBProduct01Section8_mbar" else="SUCCESS">
+                            <Sequence>
+                                <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                                <SubTree ID="PublishMagnetSection8status" data="1"/>
+                                <AlwaysFailure/>
+                            </Sequence>
+                        </Precondition>
+                    </Sequence>
+                </RetryUntilSuccessful>
+            </ReactiveSequence>
+            <SubTree ID="PublishMagnetSection8status" data="2"/>
+            <Precondition if="publish_after_magneted_finsihed==1" else="SUCCESS">
+                <ReactiveSequence>
+                    <IfThenElse>
+                        <SubTree ID="IsActivatedMagnetFixture02Product01Section8"/>
+                        <AlwaysSuccess/>
+                        <Sequence>
+                            <SubTree ID="PublishMagnetSection8status" data="0"/>
+                            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+                            <AlwaysFailure/>
+                        </Sequence>
+                    </IfThenElse>
+                    <RetryUntilSuccessful num_attempts="-1">
+                        <Sequence>
+                            <Script code="threshold_sideBProduct01Section8_mbar:=500" />
+                            <SubTree ID="GetMagnetValueFixture02Product01Section8" 
+                                actual_value="{actual_value}"/>
+                            <SubTree ID="PublishMagnetSection8mbar" data="{actual_value}"/>
+                            <Precondition if="actual_value<threshold_sideBProduct01Section8_mbar" else="SUCCESS">
+                                <Sequence>
+                                    <SubTree ID="PublishMagnetSection8status" data="3"/>
+                                    <AlwaysFailure/>
+                                </Sequence>
+                            </Precondition>
+                            <Precondition if="actual_value>=threshold_sideBProduct01Section8_mbar" else="SUCCESS">
+                                <Sequence>
+                                    <SubTree ID="PublishMagnetSection8status" data="2"/>
+                                    <AlwaysFailure/>
+                                </Sequence>
+                            </Precondition>
+                            <AlwaysFailure/>
+                        </Sequence>
+                    </RetryUntilSuccessful>
+                </ReactiveSequence>
+            </Precondition>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="GetMagnetValueFixture01Product02Section8">
+        <SubTree ID="get_magnet_station_fixture01_station_03_polar04_status_system_magnet_in_unit"
+            actual_value="{actual_value}"/>
+    </BehaviorTree>
+    <BehaviorTree ID="GetMagnetValueFixture01Product01Section8">
+        <SubTree ID="get_magnet_station_fixture01_station_03_polar08_status_system_magnet_in_unit"
+            actual_value="{actual_value}"/>
+    </BehaviorTree>
+    <BehaviorTree ID="GetMagnetValueFixture02Product02Section8">
+        <SubTree ID="get_magnet_station_fixture02_station_04_polar04_status_system_magnet_in_unit"
+            actual_value="{actual_value}"/>
+    </BehaviorTree>
+    <BehaviorTree ID="GetMagnetValueFixture02Product01Section8">
+        <SubTree ID="get_magnet_station_fixture02_station_04_polar08_status_system_magnet_in_unit"
+            actual_value="{actual_value}"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsActivatedMagnetFixture01Product02Section8">
+        <SubTree ID="is_activated_magnet_station_fixture01_station_03_polar04_command_product02_section_08_activate"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsActivatedMagnetFixture01Product01Section8">
+        <SubTree ID="is_activated_magnet_station_fixture01_station_03_polar08_command_product_01_section_08_activate"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsActivatedMagnetFixture02Product02Section8">
+        <SubTree ID="is_activated_magnet_station_fixture02_station_04_polar04_command_product02_section_08_activate"/>
+    </BehaviorTree>
+    <BehaviorTree ID="IsActivatedMagnetFixture02Product01Section8">
+        <SubTree ID="is_activated_magnet_station_fixture02_station_04_polar08_command_product_01_section_08_activate"/>
+    </BehaviorTree>
+
+    <BehaviorTree ID="ActivateMagnetFixture01Product01Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar08_command/magnet_station_fixture01_station_03_polar08_command_product_01_section_08_activate" is_latched="1" data="1"/>
+        </Sequence>  
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetFixture01Product02Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar04_command/magnet_station_fixture01_station_03_polar04_command_product02_section_08_activate" is_latched="1" data="1"/>
+        </Sequence>  
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetFixture02Product02Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_04_polar04_command/magnet_station_fixture02_station_04_polar04_command_product02_section_08_activate" is_latched="1" data="1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetFixture02Product01Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_04_polar08_command/magnet_station_fixture02_station_04_polar08_command_product_01_section_08_activate" is_latched="1" data="1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateMagnetFixture01Product01Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar08_command/magnet_station_fixture01_station_03_polar08_command_product_01_section_08_activate" is_latched="1" data="0"/>
+            <SubTree ID="PublishMagnetSection8status" data="0"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+        </Sequence> 
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateMagnetFixture01Product02Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_03_polar04_command/magnet_station_fixture01_station_03_polar04_command_product02_section_08_activate" is_latched="1" data="0"/>
+            <SubTree ID="PublishMagnetSection8status" data="0"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+        </Sequence>  
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateMagnetFixture02Product02Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_04_polar04_command/magnet_station_fixture02_station_04_polar04_command_product02_section_08_activate" is_latched="1" data="0"/>
+            <SubTree ID="PublishMagnetSection8status" data="0"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateMagnetFixture02Product01Section8">
+        <Sequence>
+            <Publish_std_msgs_Bool topic_name="/workcell/device_05/digital_outputs_magnet_station_04_polar08_command/magnet_station_fixture02_station_04_polar08_command_product_01_section_08_activate" is_latched="1" data="0"/>
+            <SubTree ID="PublishMagnetSection8status" data="0"/>
+            <SubTree ID="PublishMagnetSection8mbar" data="0"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PublishMagnetSection8mbar">
+        <Publish_std_msgs_Int16 topic_name="/workcell/ui/UI_Section8/mbar" is_latched="1"  data="{data}"/>
+    </BehaviorTree>
+    <BehaviorTree ID="PublishMagnetSection8status">
+        <Publish_std_msgs_Int16 topic_name="/workcell/ui/UI_Section8/status" is_latched="1"   data="{data}"/>
+    </BehaviorTree>
+
+    
+</root>

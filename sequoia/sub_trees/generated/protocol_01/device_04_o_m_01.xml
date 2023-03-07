@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_workobject_valve_station_qm3_mb2_fixture01_turn_product02_to_top_position">
+  <BehaviorTree ID="set_workobject_valve_station_qm3_mb2_fixture01_turn_product02_to_top_position">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm3_mb2.fixture01.turn_product02_to_top_position" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_valve_station_qm3_mb1_fixture01_turn_product_01_to_top_position">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm3_mb1.fixture01.turn_product_01_to_top_position" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_valve_station_qm4_mb2_fixture02_turn_product02_to_top_position">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm4_mb2.fixture02.turn_product02_to_top_position" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_valve_station_qm4_mb1_fixture02_turn_product_01_top_position">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm4_mb1.fixture02.turn_product_01_top_position" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_valve_station_qm5_mb1_fixture01_locking_bolt_unlock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm5_mb1.fixture01.locking_bolt.unlock" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_valve_station_qm5_mb2_fixture02_locking_bolt_unlock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_workobject_do_module_01/commands" digital_output_names="io_device.workobject.do_module_01.workobject_valve_station.qm5_mb2.fixture02.locking_bolt.unlock" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

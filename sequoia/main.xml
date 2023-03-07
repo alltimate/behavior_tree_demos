@@ -1,0 +1,29 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <include path="sub_trees/protocol_02.xml"/>
+    <include path="sub_trees/egm_control.xml"/>
+    <include path="sub_trees/trajectories.xml"/>
+    <include path="sub_trees/automatic_process.xml"/>
+    <include path="sub_trees/guide/guide_init.xml"/>
+    <include path="sub_trees/guide/all_coord_init.xml"/>
+
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+          <Parallel>
+            <SubTree ID="ActivateProtocol02Connection"/>
+            <Sequence>
+              <SubTree ID="StartEGMControl" /> 
+              <SubTree ID="StopEGM" /> 
+            </Sequence>
+            <SubTree ID="PlanDummy" />
+            <Sequence> 
+              <SubTree ID="InitializeAllCoordinates"/>
+              <SubTree ID="InitializeAllZGuides"/>
+            </Sequence>
+          </Parallel>
+          <Parallel >
+              <SubTree ID="DoAutomaticProcess"/>
+              <SubTree ID="MoveWorkObjectToHomePosition"/> 
+          </Parallel>
+        </Sequence>
+   </BehaviorTree>     
+</root>

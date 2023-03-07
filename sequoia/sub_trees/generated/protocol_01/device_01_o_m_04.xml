@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_workobject_motor_do_enabling">
+  <BehaviorTree ID="set_workobject_motor_do_enabling">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.workobject_motor.do_enabling" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_motor_do_referencing">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.workobject_motor.do_referencing" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_fixture01_turn_to_placement_area">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.workobject.fixture01.turn_to_placement_area" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_fixture02_turn_to_placement_area">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.workobject.fixture02.turn_to_placement_area" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_left_console_first_button_drive_product01_on_top_activate_led">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.left_console.first_button.drive_product01_on_top.activate_led" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_left_console_second_button_drive_product02_on_top_activate_led">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.left_console.second_button.drive_product02_on_top.activate_led" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_right_console_first_button_drive_product01_on_top_activate_led">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.right_console.first_button.drive_product01_on_top.activate_led" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_right_console_second_button_drive_product02_on_top_activate_led">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.right_console.second_button.drive_product02_on_top.activate_led" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_workobject_locking_bolt_is_locked">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_04/commands" digital_output_names="io_device.01.do_module_04.workobject_locking_bolt.is_locked" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

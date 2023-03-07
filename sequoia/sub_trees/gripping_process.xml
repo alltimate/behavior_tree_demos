@@ -1,0 +1,128 @@
+<root BTCPP_format="4" main_tree_to_execute="DoGrippingProcessWithoutCamera">
+    <include path="egm_control.xml"/>
+    <include path="trajectories.xml"/>
+    <include path="gripper.xml"/>
+    <BehaviorTree ID="RunApproach">
+        <Sequence>
+            <SubTree ID="IsTurnedFixture02ToProcessArea"/>
+            <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+            
+            <SubTree ID="LoadRotaryController"/>
+            <SubTree ID="SwitchRotaryController"/>
+            <SubTree ID="EnableRotaryDrive"/>
+            <SubTree ID="MoveRotaryToPosition01"/>
+            <SubTree ID="OpenGripperAndWaitOpened"/>
+            <SubTree ID="StartEGMControl" /> 
+            <SubTree ID="PlanApproachCartesianTrajectoryLeft" />
+            <SubTree ID="StopEGM" /> 
+            <SubTree ID="SwitchRotaryController"/>
+            <SubTree ID="EnableRotaryDrive"/>
+            <SubTree ID="MoveRotaryToPosition01"/>
+            <SubTree ID="CloseGripperAndWaitClosed"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunGrippingProgram">
+        <Sequence>
+            
+            <SubTree ID="IsTurnedFixture02ToProcessArea"/>
+            <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+            
+             <SubTree ID="LoadRotaryController"/>
+            <SubTree ID="StartEGMControl" />
+            <SubTree ID="PlanAndFollowGrippingPath"/>
+            <SubTree ID="StopEGM" /> 
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunGrippingProgramWithRotary">
+       <Sequence>
+          
+          <SubTree ID="IsTurnedFixture02ToProcessArea"/>
+          <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+          
+            <SubTree ID="LoadRotaryController"/>
+          <SubTree ID="StartEGMControl" />
+          <SubTree ID="PlanAndFollowGrippingPathMergedRotary"/>
+          <SubTree ID="StopEGM" /> 
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunDepartOnlyRightWithoutStopEGM">
+        <Sequence>
+                <SubTree ID="IsTurnedFixture02ToProcessArea"/>
+                <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+                
+                <SubTree ID="LoadRotaryController"/>
+                <SubTree ID="SwitchRotaryController"/>
+                <SubTree ID="EnableRotaryDrive"/>
+                <SubTree ID="MoveRotaryToPosition01"/>
+                <SubTree ID="OpenGripperAndWaitOpened"/>
+                <SubTree ID="StartEGMControl" />
+                <SubTree ID="PlanDepartCartesianTrajectoryRight"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunDepartOnlyOverWorkObjectWithoutStartingEGM">
+        <Sequence>
+                <SubTree ID="PlanDepartCartesianTrajectoryOverWorkObject"/>
+                <SubTree ID="StopEGM" /> 
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunDepart">
+        <Sequence>
+                
+                <SubTree ID="IsTurnedFixture02ToProcessArea"/>
+                <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+                
+                <SubTree ID="LoadRotaryController"/>
+                <SubTree ID="SwitchRotaryController"/>
+                <SubTree ID="EnableRotaryDrive"/>
+                <SubTree ID="MoveRotaryToPosition01"/>
+                <SubTree ID="OpenGripperAndWaitOpened"/>
+                <SubTree ID="StartEGMControl" />
+                <SubTree ID="PlanDepartCartesianTrajectoryRight"/>
+                <SubTree ID="PlanDepartCartesianTrajectoryOverWorkObject"/>
+                <SubTree ID="StopEGM" /> 
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="RunCompleteGrippingCycle">
+      <Sequence>
+        <SubTree ID="DoGrippingProcessWithoutCamera"/>
+        <SubTree ID="RunDepartOnlyOverWorkObjectWithoutStartingEGM"/>
+        
+      </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DoGrippingProcessWithoutCamera">
+        <Sequence>
+            
+            <Sequence>
+                <SubTree ID="RunApproach"/>
+            </Sequence>
+            <Sequence>
+                <SubTree ID="LoadRotaryController"/>
+                <SubTree ID="SwitchRotaryController"/>
+                <SubTree ID="EnableRotaryDrive"/>
+                <SubTree ID="MoveRotaryToPosition01"/>
+                
+                <SubTree ID="CatchPlasticStartFromRotaryPosition01"/>
+                
+                <SubTree ID="LoadRotaryController"/>
+                <SubTree ID="SwitchRotaryController"/>
+                <SubTree ID="EnableRotaryDrive"/>
+                <SubTree ID="MoveRotaryToPosition01"/>
+
+                <SubTree ID="RunGrippingProgramWithRotary"/>
+                
+                <SubTree ID="LoadRotaryController"/>
+                <SubTree ID="SwitchRotaryController"/>
+                <SubTree ID="EnableRotaryDrive"/>
+                <SubTree ID="MoveRotaryToPosition01"/>
+                
+                <SubTree ID="CutPlasticStartFromRotaryPosition01"/>
+
+            </Sequence>
+            <Sequence>
+                <SubTree ID="RunDepartOnlyRightWithoutStopEGM"/>
+            </Sequence>
+        </Sequence>
+   </BehaviorTree>
+</root>
+
+

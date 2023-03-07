@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_protocol_02_server_status">
+  <BehaviorTree ID="set_protocol_02_server_status">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_03/commands" digital_output_names="io_device.01.do_module_03.protocol_02.server_status" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

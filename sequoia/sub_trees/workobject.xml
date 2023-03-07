@@ -1,0 +1,888 @@
+<root BTCPP_format="4" main_tree_to_execute="TurnOffCompressor">
+    <include path="generated/protocol_01/device_01_i_m_02.xml"/>
+    <include path="generated/protocol_01/device_01_i_m_03.xml"/>
+    <include path="generated/protocol_01/device_01_i_m_04.xml"/>
+
+  
+    <include path="generated/protocol_01/device_01_o_m_02.xml"/>
+    <include path="generated/protocol_01/device_01_o_m_04.xml"/>
+    
+    <include path="generated/protocol_01/device_04_i_m_01.xml"/>
+    <include path="generated/protocol_01/device_04_o_m_01.xml"/>
+    
+    <include path="generated/protocol_02/vs_01_e01_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e02_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e03_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e04_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e05_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e06_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e07_c.xml"/>
+    <include path="generated/protocol_02/vs_01_e08_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e01_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e02_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e03_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e04_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e05_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e06_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e07_c.xml"/>
+    <include path="generated/protocol_02/vs_02_e08_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e01_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e02_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e03_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e04_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e05_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e06_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e07_c.xml"/>
+    <include path="generated/protocol_02/vs_03_e08_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e01_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e02_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e03_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e04_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e05_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e06_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e07_c.xml"/>
+    <include path="generated/protocol_02/vs_04_e08_c.xml"/>
+    
+  
+ 
+  <BehaviorTree ID="ActivateMagnetSection1">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection1InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection1InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>  
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection1InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section1"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section1"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection1InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section1"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section1"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection2">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection2InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection2InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection2InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section2"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section2"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection2InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section2"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section2"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection3">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection3InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection3InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection3InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section3"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section3"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection3InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section3"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section3"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection4">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection4InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection4InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection4InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section4"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section4"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection4InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section4"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section4"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection5">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection5InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection5InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection5InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section5"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section5"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection5InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section5"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section5"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection6">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection6InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection6InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection6InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section6"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section6"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection6InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section6"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section6"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection7">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection7InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection7InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection7InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section7"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section7"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection7InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section7"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section7"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSection8">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="ActivateMagnetSection8InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="ActivateMagnetSection8InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection8InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture01Product01Section8"/>
+      <SubTree ID="ActivateMagnetFixture01Product02Section8"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="ActivateMagnetSection8InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="ActivateMagnetFixture02Product01Section8"/>
+      <SubTree ID="ActivateMagnetFixture02Product02Section8"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="ActivateMagnetSectionAll">
+    <Sequence>
+      <SubTree ID="ActivateMagnetSection1"/>
+      <SubTree ID="ActivateMagnetSection2"/>
+      <SubTree ID="ActivateMagnetSection3"/>
+      <SubTree ID="ActivateMagnetSection4"/>
+      <SubTree ID="ActivateMagnetSection5"/>
+      <SubTree ID="ActivateMagnetSection6"/>
+      <SubTree ID="ActivateMagnetSection7"/>
+      <SubTree ID="ActivateMagnetSection8"/>
+    </Sequence>
+  </BehaviorTree>
+
+
+  <BehaviorTree ID="DeactivateMagnetSection1">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection1InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection1InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection1InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section1"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section1"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection1InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section1"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section1"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection2">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection2InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection2InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection2InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section2"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section2"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection2InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section2"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section2"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection3">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection3InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection3InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection3InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section3"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section3"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection3InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section3"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section3"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection4">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection4InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection4InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection4InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section4"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section4"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection4InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section4"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section4"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection5">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection5InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection5InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection5InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section5"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section5"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection5InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section5"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section5"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection6">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection6InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection6InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection6InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section6"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section6"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection6InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section6"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section6"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection7">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection7InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection7InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection7InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section7"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section7"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection7InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section7"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section7"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSection8">
+    <IfThenElse>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="DeactivateMagnetSection8InFixture01"/>
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+        <SubTree ID="DeactivateMagnetSection8InFixture02"/>
+        <AlwaysFailure/>
+      </IfThenElse>
+    </IfThenElse>  
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection8InFixture01">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture01Product01Section8"/>
+      <SubTree ID="DeactivateMagnetFixture01Product02Section8"/>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="DeactivateMagnetSection8InFixture02">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <SubTree ID="DeactivateMagnetFixture02Product01Section8"/>
+      <SubTree ID="DeactivateMagnetFixture02Product02Section8"/>
+    </IfThenElse>
+  </BehaviorTree>
+
+  <BehaviorTree ID="DeactivateMagnetSectionAll">
+    <Sequence>
+      <Parallel>
+        <SubTree ID="DeactivateMagnetSection1"/>
+        <SubTree ID="DeactivateMagnetSection2"/>
+        <SubTree ID="DeactivateMagnetSection3"/>
+        <SubTree ID="DeactivateMagnetSection4"/>
+        <SubTree ID="DeactivateMagnetSection5"/>
+        <SubTree ID="DeactivateMagnetSection6"/>
+        <SubTree ID="DeactivateMagnetSection7"/>
+        <SubTree ID="DeactivateMagnetSection8"/>
+      </Parallel>
+    </Sequence>
+  </BehaviorTree>
+
+  
+  <BehaviorTree ID="ActivateWorkObjectBolt">
+    <Sequence>
+      
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_device_01_o_m_02/cs" digital_output_names="io_device.device_01.o_m_02.main_protocol_01eumatic_valve_station_qm15.lock_workobject_bolt;io_device.device_01.o_m_02.main_protocol_01eumatic_valve_station_qm15.unlock_workobject_bolt" states="1;0"/>
+      
+    </Sequence>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="DeactivateWorkObjectBolt">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_device_01_o_m_02/cs" digital_output_names="io_device.device_01.o_m_02.main_protocol_01eumatic_valve_station_qm15.lock_workobject_bolt;io_device.device_01.o_m_02.main_protocol_01eumatic_valve_station_qm15.unlock_workobject_bolt" states="0;1"/>
+      
+    </Sequence>
+  </BehaviorTree>
+  
+  
+  
+  <BehaviorTree ID="IsWorkObjectLockingBoltLocked">
+    <SubTree ID="is_actuator_box_03_ch_01_workobject_locking_bolt_is_locked"/>
+  </BehaviorTree>
+  <BehaviorTree ID="IsWorkObjectLockingBoltUnlocked">
+    <SubTree ID="is_actuator_box_03_ch_02_workobject_locking_bolt_is_unlocked"/>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="TurnFixture01Product02ToTop">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct02Activated"/>
+      <AlwaysSuccess/>
+      <Sequence>
+        <SubTree ID="Fixture01LockingBoltUnlock"/>
+        <SubTree ID="WaitForFixture01LockingBoltUnlocked"/>
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm3_mb2.fixture01.turn_product02_to_top_position;io_device.workobject.o_m_01.workobject_valve_station.qm3_mb1.fixture01.turn_product_01_to_top_position" states="1;0"/>
+        <SubTree ID="WaitForFixture01TurningDeviceProduct02Activated"/>
+        <SubTree ID="Fixture01LockingBoltLock"/>
+        <SubTree ID="WaitForFixture01LockingBoltLocked"/>
+      </Sequence> 
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="TurnFixture01Product01ToTop">
+    <IfThenElse>
+      <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+      <AlwaysSuccess/>
+      <Sequence>
+        <SubTree ID="Fixture01LockingBoltUnlock"/>
+        <SubTree ID="WaitForFixture01LockingBoltUnlocked"/>
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm3_mb2.fixture01.turn_product02_to_top_position;io_device.workobject.o_m_01.workobject_valve_station.qm3_mb1.fixture01.turn_product_01_to_top_position" states="0;1"/>
+        <SubTree ID="WaitForFixture01TurningDeviceProduct01Activated"/>
+        <SubTree ID="Fixture01LockingBoltLock"/>
+        <SubTree ID="WaitForFixture01LockingBoltLocked"/>
+      </Sequence>
+    </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="TurnFixture02Product02ToTop">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct02Activated"/>
+      <AlwaysSuccess/>
+      <Sequence>
+        <SubTree ID="Fixture02LockingBoltUnlock"/>
+        <SubTree ID="WaitForFixture02LockingBoltUnlocked"/>
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm4_mb2.fixture02.turn_product02_to_top_position;io_device.workobject.o_m_01.workobject_valve_station.qm4_mb1.fixture02.turn_product_01_top_position" states="1;0"/>
+        <SubTree ID="WaitForFixture02TurningDeviceProduct02Activated"/>
+        <SubTree ID="Fixture02LockingBoltLock"/>
+        <SubTree ID="WaitForFixture02LockingBoltLocked"/>
+      </Sequence>
+     </IfThenElse>
+  </BehaviorTree>
+  <BehaviorTree ID="TurnFixture02Product01ToTop">
+    <IfThenElse>
+      <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+      <AlwaysSuccess/>
+      <Sequence>
+        <SubTree ID="Fixture02LockingBoltUnlock"/>
+        <SubTree ID="WaitForFixture02LockingBoltUnlocked"/>
+        <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm4_mb2.fixture02.turn_product02_to_top_position;io_device.workobject.o_m_01.workobject_valve_station.qm4_mb1.fixture02.turn_product_01_top_position" states="0;1"/>
+        <SubTree ID="WaitForFixture02TurningDeviceProduct01Activated"/>
+        <SubTree ID="Fixture02LockingBoltLock"/>
+        <SubTree ID="WaitForFixture02LockingBoltLocked"/>
+      </Sequence>
+    </IfThenElse>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="Fixture01LockingBoltUnlock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm5_mb1.fixture01.locking_bolt.unlock" states="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="Fixture01LockingBoltLock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm5_mb1.fixture01.locking_bolt.unlock" states="0"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="Fixture02LockingBoltUnlock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm5_mb2.fixture02.locking_bolt.unlock" states="1"/>
+    </Sequence>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="Fixture02LockingBoltLock">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_workobject_o_m_01/cs" digital_output_names="io_device.workobject.o_m_01.workobject_valve_station.qm5_mb2.fixture02.locking_bolt.unlock" states="0"/>
+    </Sequence>
+  </BehaviorTree>
+
+
+  <BehaviorTree ID="IsFixture01LockingBoltLocked">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_03_fixture01_locking_bolt_01_locked"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_03_fixture01_locking_bolt_03_locked"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture01LockingBoltLocked">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_03_fixture01_locking_bolt_01_locked" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_03_fixture01_locking_bolt_03_locked" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="IsFixture01LockingBoltUnlocked">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_04_fixture01_locking_bolt_01_unlocked"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_04_fixture01_locking_bolt_03_unlocked"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture01LockingBoltUnlocked">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_04_fixture01_locking_bolt_01_unlocked" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_04_fixture01_locking_bolt_03_unlocked" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsFixture02LockingBoltLocked">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_07_fixture02_locking_bolt_02_locked"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_07_fixture02_locking_bolt_04_locked"/>
+    </Sequence>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="WaitForFixture02LockingBoltLocked">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_07_fixture02_locking_bolt_02_locked" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_07_fixture02_locking_bolt_04_locked" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsFixture02LockingBoltUnlocked">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_08_fixture02_locking_bolt_02_unlocked"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_08_fixture02_locking_bolt_04_unlocked"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture02LockingBoltUnlocked">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_08_fixture02_locking_bolt_02_unlocked" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_08_fixture02_locking_bolt_04_unlocked" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsFixture01TurningDeviceProduct01Activated">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_02_fixture01_turning_device_01_product_01_in_top_position"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_02_fixture01_turning_device_03_product_01_in_top_position"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture01TurningDeviceProduct01Activated">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_02_fixture01_turning_device_01_product_01_in_top_position" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_02_fixture01_turning_device_03_product_01_in_top_position" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+  
+  <BehaviorTree ID="IsFixture02TurningDeviceProduct01Activated">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_06_fixture02_turning_device_02_product_01_in_top_position"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_06_fixture02_turning_device_04_product_01_in_top_position"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture02TurningDeviceProduct01Activated">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_06_fixture02_turning_device_02_product_01_in_top_position" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_06_fixture02_turning_device_04_product_01_in_top_position" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsFixture01TurningDeviceProduct02Activated">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_01_fixture01_turning_device_01_product02_in_top_position"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_01_fixture01_turning_device_03_product02_in_top_position"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture01TurningDeviceProduct02Activated">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_01_fixture01_turning_device_01_product02_in_top_position" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_01_fixture01_turning_device_03_product02_in_top_position" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsFixture02TurningDeviceProduct02Activated">
+    <Sequence>
+      <SubTree ID="is_workobject_actuator_box_01_ch_05_fixture02_turning_device_02_product02_in_top_position"/>
+      <SubTree ID="is_workobject_actuator_box_02_ch_05_fixture02_turning_device_04_product02_in_top_position"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="WaitForFixture02TurningDeviceProduct02Activated">
+    <Sequence>
+      <SubTree ID="wait_for_workobject_actuator_box_01_ch_05_fixture02_turning_device_02_product02_in_top_position" state="1"/>
+      <SubTree ID="wait_for_workobject_actuator_box_02_ch_05_fixture02_turning_device_04_product02_in_top_position" state="1"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsTurnedFixture02ToLoadArea">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_d_device_01_i_m_04/states" 
+          input_names="io_device.device_01.i_m_04.workobject.fixture01.is_in_placement_area;
+                       io_device.device_01.i_m_04.workobject.fixture02.is_in_placement_area" 
+                       desired_states="0;1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsTurnedFixture01ToLoadArea">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_d_device_01_i_m_04/states" 
+          input_names="io_device.device_01.i_m_04.workobject.fixture01.is_in_placement_area;
+                       io_device.device_01.i_m_04.workobject.fixture02.is_in_placement_area" 
+                       desired_states="1;0" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="IsTurnedFixture02ToProcessArea">
+    <Sequence>
+      <Inverter>
+        <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+      </Inverter>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="IsTurnedFixture01ToProcessArea">
+    <Sequence>
+      <Inverter>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      </Inverter>
+    </Sequence>
+  </BehaviorTree>
+
+    <BehaviorTree ID="IsTurnedProduct01ToTopPosition">
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+        <SubTree ID="IsFixture01TurningDeviceProduct01Activated"/>
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+          <SubTree ID="IsFixture02TurningDeviceProduct01Activated"/>
+          <AlwaysFailure/>
+        </IfThenElse>
+      </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="IsTurnedProduct02ToTopPosition">
+      <IfThenElse>
+        <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+        <SubTree ID="IsFixture01TurningDeviceProduct02Activated"/>
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+          <SubTree ID="IsFixture02TurningDeviceProduct02Activated"/>
+          <AlwaysFailure/>
+        </IfThenElse>
+      </IfThenElse>
+    </BehaviorTree>
+
+    <BehaviorTree ID="TurnProduct01ToTopPosition">
+      <Sequence>
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+          <SubTree ID="TurnFixture01Product01ToTop"/>
+          <IfThenElse>
+            <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+            <SubTree ID="TurnFixture02Product01ToTop"/>
+            <AlwaysFailure/>
+          </IfThenElse>
+        </IfThenElse>
+        <SubTree ID="InitializeAllZGuides"/>
+      </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="TurnProduct02ToTopPosition">
+      <Sequence>
+        <IfThenElse>
+          <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+          <SubTree ID="TurnFixture01Product02ToTop"/>
+          <IfThenElse>
+            <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+            <SubTree ID="TurnFixture02Product02ToTop"/>
+            <AlwaysFailure/>
+          </IfThenElse>
+        </IfThenElse>
+        <SubTree ID="InitializeAllZGuides"/>
+      </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="MoveWorkObjectToHomePosition">
+        <Sequence>
+          <SubTree ID="set_hmi01_drive_all_components_to_home_posititon_activate_button_led" state="1"/>
+          <RetryUntilSuccessful num_attempts="-1">
+            <Sequence>
+              <RetryUntilSuccessful num_attempts="-1">
+                  <SubTree ID="is_hmi01_drive_all_components_to_home_posititon_is_pressed"/>
+              </RetryUntilSuccessful> 
+              <SubTree ID="set_hmi01_drive_all_components_to_home_posititon_activate_button_led" state="0"/>
+              <Inverter>
+                  <Sequence>
+                    <SubTree ID="is_workobject_motor_power_enabled_turn_to_fixture01"/>
+                    <SubTree ID="is_workobject_motor_power_enabled_turn_to_fixture02"/>
+                  </Sequence>
+              </Inverter>
+              <SubTree ID="DeactivateWorkObjectBolt"/>
+              <SubTree ID="wait_for_actuator_box_03_ch_02_workobject_locking_bolt_is_unlocked" state="1"/>
+              <SubTree ID="set_workobject_fixture02_turn_to_placement_area" state="0"/> 
+              <SubTree ID="set_workobject_fixture01_turn_to_placement_area" state="0"/> 
+              <SubTree ID="set_workobject_motor_do_referencing" state="0"/>
+              <SubTree ID="set_workobject_motor_do_enabling" state="0"/> 
+              <SubTree ID="set_workobject_locking_bolt_is_locked" state="0"/>
+              <Wait wait_duration_second="1"/>
+              <SubTree ID="set_workobject_motor_do_enabling" state="1"/> 
+              <Wait wait_duration_second="1"/>
+              <SubTree ID="wait_for_workobject_motor_enabling_is_done" state="1"/>
+              <SubTree ID="set_workobject_motor_do_enabling" state="0"/>
+              <Wait wait_duration_second="1"/>
+              <SubTree ID="set_workobject_motor_do_referencing" state="1"/>
+              <Wait wait_duration_second="1"/>
+              <SubTree ID="wait_for_workobject_fixture01_is_in_placement_area" state="1"/>
+              <SubTree ID="set_workobject_motor_do_referencing" state="0"/>
+              <Wait wait_duration_second="1"/>
+              <SubTree ID="MoveFixture02ToLoadArea"/>
+              <AlwaysFailure/>
+            </Sequence>
+          </RetryUntilSuccessful>
+        </Sequence>
+    </BehaviorTree>
+ 
+
+  <BehaviorTree ID="MoveFixture01ToLoadArea">
+    <Sequence>
+      <SubTree ID="DeactivateWorkObjectBolt"/>
+      <SubTree ID="wait_for_actuator_box_03_ch_02_workobject_locking_bolt_is_unlocked" state="1"/>
+      <SubTree ID="set_workobject_locking_bolt_is_locked" state="0"/> 
+      <SubTree ID="wait_for_workobject_fixture02_do_referencing" state="0"/>
+      <SubTree ID="wait_for_workobject_fixture01_do_referencing" state="0"/>
+      <SubTree ID="IsTurnedFixture02ToLoadArea"/>
+      <SubTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture02" state="0"/>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_device_01_o_m_04/cs" 
+                              digital_output_names="io_device.device_01.o_m_04.workobject.fixture01.turn_to_placement_area;io_device.device_01.o_m_04.workobject.fixture02.turn_to_placement_area" 
+                              states="1;0"
+      />
+      <SubTree ID="wait_for_workobject_movement_busy_state" state="1"/>
+      <SubTree ID="set_workobject_fixture01_turn_to_placement_area" state="0"/>     
+
+      <SubTree ID="wait_for_workobject_fixture01_is_in_placement_area" state="1"/> 
+      <SubTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture01" state="0"/>
+      <SubTree ID="ActivateWorkObjectBolt" state="1"/>
+      <SubTree ID="wait_for_actuator_box_03_ch_01_workobject_locking_bolt_is_locked" state="1"/>
+      <SubTree ID="set_workobject_locking_bolt_is_locked" state="1"/> 
+      <SubTree ID="InitializeAllZGuides"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="MoveFixture02ToLoadArea">
+    <Sequence>
+      <SubTree ID="DeactivateWorkObjectBolt"/>
+      <SubTree ID="wait_for_actuator_box_03_ch_02_workobject_locking_bolt_is_unlocked" state="1"/>
+      <SubTree ID="set_workobject_locking_bolt_is_locked" state="0"/> 
+      <SubTree ID="wait_for_workobject_fixture02_do_referencing" state="0"/>
+      <SubTree ID="wait_for_workobject_fixture01_do_referencing" state="0"/>
+      <SubTree ID="IsTurnedFixture01ToLoadArea"/>
+      <SubTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture01" state="0"/>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_d_device_01_o_m_04/cs" 
+                              digital_output_names="io_device.device_01.o_m_04.workobject.fixture01.turn_to_placement_area;io_device.device_01.o_m_04.workobject.fixture02.turn_to_placement_area" 
+                              states="0;1"
+      />
+      <SubTree ID="wait_for_workobject_movement_busy_state" state="1"/>
+      <SubTree ID="set_workobject_fixture02_turn_to_placement_area" state="0"/>
+      <SubTree ID="wait_for_workobject_fixture02_is_in_placement_area" state="1"/>
+      <SubTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture02" state="0"/>
+      <SubTree ID="ActivateWorkObjectBolt"/>
+      <SubTree ID="wait_for_actuator_box_03_ch_01_workobject_locking_bolt_is_locked" state="1"/>
+      <SubTree ID="set_workobject_locking_bolt_is_locked" state="1"/>
+      <SubTree ID="InitializeAllZGuides"/>
+    </Sequence>
+  </BehaviorTree>  
+</root>

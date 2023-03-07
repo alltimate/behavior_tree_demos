@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="wait_for_workobject_actuator_box_01_ch_01_fixture01_turning_device_01_product02_in_top_position">
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_01_fixture01_turning_device_01_product02_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_01.fixture01.turning_device_01.product02_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_01_fixture01_turning_device_01_product02_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_01.fixture01.turning_device_01.product02_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_02_fixture01_turning_device_01_product_01_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_02.fixture01.turning_device_01.product_01_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_02_fixture01_turning_device_01_product_01_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_02.fixture01.turning_device_01.product_01_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_03_fixture01_locking_bolt_01_locked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_03.fixture01.locking_bolt_01.locked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_03_fixture01_locking_bolt_01_locked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_03.fixture01.locking_bolt_01.locked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_04_fixture01_locking_bolt_01_unlocked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_04.fixture01.locking_bolt_01.unlocked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_04_fixture01_locking_bolt_01_unlocked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_04.fixture01.locking_bolt_01.unlocked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_05_fixture02_turning_device_02_product02_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_05.fixture02.turning_device_02.product02_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_05_fixture02_turning_device_02_product02_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_05.fixture02.turning_device_02.product02_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_06_fixture02_turning_device_02_product_01_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_06.fixture02.turning_device_02.product_01_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_06_fixture02_turning_device_02_product_01_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_06.fixture02.turning_device_02.product_01_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_07_fixture02_locking_bolt_02_locked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_07.fixture02.locking_bolt_02.locked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_07_fixture02_locking_bolt_02_locked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_07.fixture02.locking_bolt_02.locked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_01_ch_08_fixture02_locking_bolt_02_unlocked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_08.fixture02.locking_bolt_02.unlocked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_01_ch_08_fixture02_locking_bolt_02_unlocked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_01_ch_08.fixture02.locking_bolt_02.unlocked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_01_fixture01_turning_device_03_product02_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_01.fixture01.turning_device_03.product02_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_01_fixture01_turning_device_03_product02_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_01.fixture01.turning_device_03.product02_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_02_fixture01_turning_device_03_product_01_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_02.fixture01.turning_device_03.product_01_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_02_fixture01_turning_device_03_product_01_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_02.fixture01.turning_device_03.product_01_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_03_fixture01_locking_bolt_03_locked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_03.fixture01.locking_bolt_03.locked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_03_fixture01_locking_bolt_03_locked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_03.fixture01.locking_bolt_03.locked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_04_fixture01_locking_bolt_03_unlocked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_04.fixture01.locking_bolt_03.unlocked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_04_fixture01_locking_bolt_03_unlocked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_04.fixture01.locking_bolt_03.unlocked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_05_fixture02_turning_device_04_product02_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_05.fixture02.turning_device_04.product02_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_05_fixture02_turning_device_04_product02_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_05.fixture02.turning_device_04.product02_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_06_fixture02_turning_device_04_product_01_in_top_position">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_06.fixture02.turning_device_04.product_01_in_top_position" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_06_fixture02_turning_device_04_product_01_in_top_position">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_06.fixture02.turning_device_04.product_01_in_top_position" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_07_fixture02_locking_bolt_04_locked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_07.fixture02.locking_bolt_04.locked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_07_fixture02_locking_bolt_04_locked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_07.fixture02.locking_bolt_04.locked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_actuator_box_02_ch_08_fixture02_locking_bolt_04_unlocked">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/wait_for_state" digital_input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_08.fixture02.locking_bolt_04.unlocked" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_actuator_box_02_ch_08_fixture02_locking_bolt_04_unlocked">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_workobject_di_module_01/states" input_names="io_device.workobject.di_module_01.workobject_actuator_box_02_ch_08.fixture02.locking_bolt_04.unlocked" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

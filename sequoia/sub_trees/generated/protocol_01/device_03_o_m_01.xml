@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_device_03_0_off1_edge">
+  <BehaviorTree ID="set_device_03_0_off1_edge">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_0_off1_edge" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_1_off2">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_1_off2" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_2_off3">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_2_off3" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_3_enable_operation">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_3_enable_operation" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_4_operation_condition">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_4_operation_condition" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_5_continue_ramp_function">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_5_continue_ramp_function" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_6_enable_setpoint">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_6_enable_setpoint" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_7_acknowledge_edge">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_7_acknowledge_edge" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_8_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_8_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_9_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_9_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_10_control_via_device_05">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_10_control_via_device_05" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_11_setpoint_inversion">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_11_setpoint_inversion" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_12_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_12_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_13_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_13_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_14_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_14_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_device_03_15_reserved">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_device_03/commands" digital_output_names="device_03_15_reserved" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

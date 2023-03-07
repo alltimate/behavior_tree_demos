@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="set_valve_qm6_open_gripper">
+  <BehaviorTree ID="set_valve_qm6_open_gripper">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm6.open_gripper" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm6_close_gripper">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm6.close_gripper" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm7_deactivate_io03">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm7.deactivate_io03" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm7_activate_io03">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm7.activate_io03" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm8_activate_io_01">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm8.activate_io_01" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="set_valve_qm8_activate_io_02">
+    <Sequence>
+      <ActivateDigitalOutputs topic="/workcell/controller/digital_outputs_io_device_01_do_module_01/commands" digital_output_names="io_device.01.do_module_01.valve_qm8.activate_io_02" states="{state}"/>
+    </Sequence>
+  </BehaviorTree>
+  
+</root>

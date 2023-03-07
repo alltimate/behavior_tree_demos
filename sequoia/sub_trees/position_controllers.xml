@@ -1,0 +1,98 @@
+<root BTCPP_format="4" main_tree_to_execute="FollowJointTrajectory">
+
+    <BehaviorTree ID="FollowJointTrajectory">
+        <Sequence >
+            <FollowJointTrajectory
+               joints_trajectory="{joints_trajectory}"
+               server_name="/workcell/controller/position_trajectory_controller/follow_joint_trajectory"
+               single_step="FALSE"
+               connection_timeout_ms="500"
+               start_delay_seconds="0"
+           />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PlanPathJointsWithNoFreedom">
+        <Sequence >
+        <PlanPath
+            planning_service="/workcell/robot_arm/path_planning/plan_path"
+            path_file_name="{path_file_name}"
+            change_point_normal_alongside_path="FALSE"
+            linear_discretization_mm="0.0"
+            angular_descretization_deg="0"
+            frame_id="{frame_id}"
+            traverse_time_between_points="0.4"
+            joint_names="joint_1;joint_2;joint_3;joint_4;joint_5;joint_6"
+            plan_joints_trajectory="joints_trajectory"
+            use_current_joints_state_as_initial="TRUE"
+            x_freedom_in_degree="0"
+            y_freedom_in_degree="3"
+            z_freedom_in_degree="0"
+            position_increament_in_meter="0"
+            rotation_increament_in_degree="1"
+            />
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="PlanPathJointsWithMoreFreedom">
+        <Sequence >
+        <PlanPath
+            planning_service="/workcell/robot_arm/path_planning/plan_path"
+            path_file_name="{path_file_name}"
+            change_point_normal_alongside_path="FALSE"
+            linear_discretization_mm="0.0"
+            angular_descretization_deg="0"
+            frame_id="{frame_id}"
+            traverse_time_between_points="0.4"
+            joint_names="joint_1;joint_2;joint_3;joint_4;joint_5;joint_6"
+            plan_joints_trajectory="joints_trajectory"
+            use_current_joints_state_as_initial="TRUE"
+            x_freedom_in_degree="0"
+            y_freedom_in_degree="3"
+            z_freedom_in_degree="0"
+            position_increament_in_meter="0"
+            rotation_increament_in_degree="1"
+            />
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="PlanPathJointsAndRotary">
+        <Sequence >
+            <PlanPath
+                planning_service="/workcell/robot_arm/path_planning/plan_path"
+                path_file_name="{path_file_name}"
+                change_point_normal_alongside_path="FALSE"
+                linear_discretization_mm="0.0"
+                angular_descretization_deg="0"
+                frame_id="{frame_id}"
+                traverse_time_between_points="0.01392758"
+                joint_names="joint_1;joint_2;joint_3;joint_4;joint_5;joint_6;joint_rotary;"
+                plan_joints_trajectory="joints_trajectory"
+                use_current_joints_state_as_initial="TRUE"
+                x_freedom_in_degree="0"
+                y_freedom_in_degree="3"
+                z_freedom_in_degree="0"
+                position_increament_in_meter="0"
+                rotation_increament_in_degree="1"
+                reverse= "FALSE"
+                />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="OptimizeTimeJointsTrajectory">
+        <Sequence >
+            <OptimizeTimeJointsTrajectory
+               joints_trajectory="{joints_trajectory}"
+               planning_service="/workcell/robot_arm/path_planning/plan_joints_trajectory/optimize_time"
+               velocity_limits_max=""
+               velocity_limits_min=""
+               acceleration_limits_max="+30;+30;+30;+30;+30;+30"
+               acceleration_limits_min="-1;-30;-30;-30;-30;-1"
+               velocity_limits_percentage="10"
+               acceleration_limits_percentage="10"
+               sampling_frequency="500"
+               number_of_grid_points="-1"
+               optimized_joints_trajectory="optimized_joints_trajectory"
+            />
+        </Sequence>
+    </BehaviorTree>
+
+    </root>

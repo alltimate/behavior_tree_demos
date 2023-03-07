@@ -1,0 +1,367 @@
+<root BTCPP_format="4" main_tree_to_execute="DoMagnetProcess">
+    <include path="generated/protocol_01/device_01_i_m_03.xml"/>
+    <include path="workobject.xml"/>
+    <include path="guide/guide_section01.xml"/>
+    <include path="guide/guide_section02.xml"/>
+    <include path="guide/guide_section03.xml"/>
+    <include path="guide/guide_section04.xml"/>
+    <include path="guide/guide_section05.xml"/>
+    <include path="guide/guide_section06.xml"/>
+    <include path="guide/guide_section07.xml"/>
+    <include path="guide/guide_section08.xml"/>
+
+    <include path="magnets/magnets_section01.xml"/>
+    <include path="magnets/magnets_section02.xml"/>
+    <include path="magnets/magnets_section03.xml"/>
+    <include path="magnets/magnets_section04.xml"/>
+    <include path="magnets/magnets_section05.xml"/>
+    <include path="magnets/magnets_section06.xml"/>
+    <include path="magnets/magnets_section07.xml"/>
+    <include path="magnets/magnets_section08.xml"/>
+
+    
+    <BehaviorTree ID="Step1">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection1"/>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection3"/>
+                <SubTree ID="DeactivateMagnetSection5"/>
+                <SubTree ID="DeactivateMagnetSection6"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+                <SubTree ID="DeactivateMagnetSection8"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection4"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection4"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorReleaseButton">
+        <Sequence>
+            <Inverter>
+                <SubTree ID="is_hmi02_release_all_magnets_pushbutton_is_pressed" />
+            </Inverter>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep1">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step2">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection1"/>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection3"/>
+                <SubTree ID="DeactivateMagnetSection5"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+                <SubTree ID="DeactivateMagnetSection8"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection6"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection6"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep2">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step3">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection3"/>
+                <SubTree ID="DeactivateMagnetSection5"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+                <SubTree ID="DeactivateMagnetSection8"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection1"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection1"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep3">
+        <Sequence>
+            <!-- <SubTree ID="MonitorMagneteSection1"/> -->
+            <AlwaysSuccess/>
+            <!-- <Script code="threshold_sideBProduct01Section1_mbar:=500" /> -->
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step4">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection3"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+                <SubTree ID="DeactivateMagnetSection8"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection5"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection5"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep4">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step5">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+                <SubTree ID="DeactivateMagnetSection8"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection3"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection3"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep5">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step6">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection2"/>
+                <SubTree ID="DeactivateMagnetSection7"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection8"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection8"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep6">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step7">
+        <Sequence>
+            <Parallel>
+                <SubTree ID="DeactivateMagnetSection2"/>
+            </Parallel>
+            <SubTree ID="ActivateMagnetAndGuideSection7"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            <SubTree ID="WaitForKneeSwitchPressed"/>
+            <SubTree ID="DeactivateGuideSection7"/>
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep7">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="Step8">
+        <Sequence>
+            
+            <SubTree ID="ActivateMagnetAndGuideSection2"/>
+            <!-- <SubTree ID="DeactivateGuideLines"/> -->
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="MonitorStep8">
+        <Sequence>
+            <AlwaysSuccess/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="DoMagnetProcess">
+        <Sequence >
+             <!-- <SubTree ID="ActivateLoggingAutomaticProcessWithoutDetails"/> -->
+            <RetryUntilSuccessful num_attempts="-1">
+                <Sequence>
+                    <SubTree ID="DeactivateGuideLines"/>
+                    <SubTree ID="WaitForKneeSwitchPressed"/>
+                    <!-- <ReactiveSequence> -->
+                        <!-- <SubTree ID="MonitorReleaseButton"/> -->
+                        <SubTree ID="Step1"/>
+                        <ReactiveSequence>
+                            <!-- <SubTree ID="MonitorStep1"/> -->
+                            <RetryUntilSuccessful num_attempts="-1">
+                                <Sequence>
+                                    <SubTree ID="Step2"/>
+                                    <ReactiveSequence>
+                                        <!-- <SubTree ID="MonitorStep1"/> -->
+                                        <!-- <SubTree ID="MonitorStep2"/> -->
+                                        <RetryUntilSuccessful num_attempts="-1">
+                                            <Sequence>
+                                                <SubTree ID="Step3"/>
+                                                <ReactiveSequence >
+                                                    <!-- <SubTree ID="MonitorStep1"/> -->
+                                                    <!-- <SubTree ID="MonitorStep2"/> -->
+                                                    <!-- <SubTree ID="MonitorStep3"/> -->
+                                                    <RetryUntilSuccessful num_attempts="-1">
+                                                        <Sequence>
+                                                            <SubTree ID="Step4"/>
+                                                            <ReactiveSequence>
+                                                                <!-- <SubTree ID="MonitorStep1"/> -->
+                                                                <!-- <SubTree ID="MonitorStep2"/> -->
+                                                                <!-- <SubTree ID="MonitorStep3"/> -->
+                                                                <!-- <SubTree ID="MonitorStep4"/> -->
+                                                                <RetryUntilSuccessful num_attempts="-1">
+                                                                    <Sequence>
+                                                                        <SubTree ID="Step5"/>
+                                                                        <ReactiveSequence>
+                                                                            <!-- <SubTree ID="MonitorStep1"/> -->
+                                                                            <!-- <SubTree ID="MonitorStep2"/> -->
+                                                                            <!-- <SubTree ID="MonitorStep3"/> -->
+                                                                            <!-- <SubTree ID="MonitorStep4"/> -->
+                                                                            <!-- <SubTree ID="MonitorStep5"/> -->
+                                                                            <RetryUntilSuccessful num_attempts="-1">
+                                                                                <Sequence>
+                                                                                    <SubTree ID="Step6"/>
+                                                                                    <ReactiveSequence>
+                                                                                        <!-- <SubTree ID="MonitorStep1"/> -->
+                                                                                        <!-- <SubTree ID="MonitorStep2"/> -->
+                                                                                        <!-- <SubTree ID="MonitorStep3"/> -->
+                                                                                        <!-- <SubTree ID="MonitorStep4"/> -->
+                                                                                        <!-- <SubTree ID="MonitorStep5"/> -->
+                                                                                        <!-- <SubTree ID="MonitorStep6"/> -->
+                                                                                        <RetryUntilSuccessful num_attempts="-1">
+                                                                                            <Sequence>
+                                                                                                <SubTree ID="Step7"/>
+                                                                                                <ReactiveSequence>
+                                                                                                    <!-- <SubTree ID="MonitorStep1"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep2"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep3"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep4"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep5"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep6"/> -->
+                                                                                                    <!-- <SubTree ID="MonitorStep7"/> -->
+                                                                                                    <RetryUntilSuccessful num_attempts="-1">
+                                                                                                        <Sequence>
+                                                                                                            <SubTree ID="Step8"/>
+                                                                                                        </Sequence>
+                                                                                                    </RetryUntilSuccessful>
+                                                                                                </ReactiveSequence>
+                                                                                            </Sequence>
+                                                                                        </RetryUntilSuccessful>
+                                                                                    </ReactiveSequence>            
+                                                                                </Sequence>
+                                                                            </RetryUntilSuccessful>
+                                                                        </ReactiveSequence>
+                                                                    </Sequence>
+                                                                </RetryUntilSuccessful>
+                                                            </ReactiveSequence>
+                                                        </Sequence>
+                                                    </RetryUntilSuccessful>
+                                                </ReactiveSequence>
+                                            </Sequence>
+                                        </RetryUntilSuccessful>
+                                    </ReactiveSequence>
+                                </Sequence>
+                            </RetryUntilSuccessful>
+                        </ReactiveSequence>
+                    <!-- </ReactiveSequence> -->
+                </Sequence>                            
+            </RetryUntilSuccessful>
+        </Sequence>
+   </BehaviorTree>
+
+    
+
+    <BehaviorTree ID="ActivateMagnetAndGuideSection1">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection1"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection1" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection2">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection2"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection2" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            <SubTree ID="DeactivateGuideSection2"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection3">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection3"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection3" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection4">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection4"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection4" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection5">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection5"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection5" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection6">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection6"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection6" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection7">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection7"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection7" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="ActivateMagnetAndGuideSection8">
+        <Sequence>
+            <Script code="publish_after_magneted_finsihed:=0"/>
+            <SubTree ID="ActivateGuideSection8"/>
+            <SubTree ID="ActivateAndWaitForMagnetedSection8" publish_after_magneted_finsihed="{publish_after_magneted_finsihed}"/> 
+            
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="WaitForKneeSwitchPressed">
+        <Sequence>
+            <!-- <RetryUntilSuccessful num_attempts="-1">
+                <SubTree ID="is_magnet_process_knee_switch_is_pressed" state="1"/>
+            </RetryUntilSuccessful> -->
+            <WaitForDigitalInput server_name="/workcell/controller/knee_switch_controller/wait_for_state" digital_input_names="io_device.01.di_module_03.magnet_process_knee_switch.is_pressed" states="1" connection_timeout_ms="200"/>
+        </Sequence>
+    </BehaviorTree>
+    <BehaviorTree ID="DeactivateGuideLines">
+        <Sequence>
+           <SubTree ID="DeactivateGuideSection1"/>
+           <SubTree ID="DeactivateGuideSection2"/>
+           <SubTree ID="DeactivateGuideSection3"/>
+           <SubTree ID="DeactivateGuideSection4"/>
+           <SubTree ID="DeactivateGuideSection5"/>
+           <SubTree ID="DeactivateGuideSection6"/>
+           <SubTree ID="DeactivateGuideSection7"/>
+           <SubTree ID="DeactivateGuideSection8"/>
+           <SubTree ID="StopProjectionLefttGuideFixture01Product01"/>
+           <SubTree ID="StopProjectionLefttGuideFixture01Product02"/>
+           <SubTree ID="StopProjectionRightGuideFixture01Product02"/>
+           <SubTree ID="StopProjectionRightGuideFixture01Product01"/>
+           <SubTree ID="StopProjectionLefttGuideFixture02Product01"/>
+           <SubTree ID="StopProjectionLefttGuideFixture02Product02"/>
+           <SubTree ID="StopProjectionRightGuideFixture02Product02"/>
+           <SubTree ID="StopProjectionRightGuideFixture02Product01"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

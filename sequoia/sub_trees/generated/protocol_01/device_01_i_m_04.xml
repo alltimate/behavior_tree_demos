@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root BTCPP_format="4" main_tree_to_execute="wait_for_left_button_ch_01_is_pressed">
+  
+  <BehaviorTree ID="wait_for_left_button_ch_01_is_pressed">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.left_button_ch_01.is_pressed" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_left_button_ch_01_is_pressed">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.left_button_ch_01.is_pressed" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_left_button_ch_02_is_pressed">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.left_button_ch_02.is_pressed" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_left_button_ch_02_is_pressed">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.left_button_ch_02.is_pressed" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_right_button_ch_01_is_pressed">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.right_button_ch_01.is_pressed" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_right_button_ch_01_is_pressed">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.right_button_ch_01.is_pressed" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_right_button_ch0_2_is_pressed">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.right_button_ch0_2.is_pressed" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_right_button_ch0_2_is_pressed">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.right_button_ch0_2.is_pressed" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_fixture01_is_in_placement_area">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject.fixture01.is_in_placement_area" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_fixture01_is_in_placement_area">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject.fixture01.is_in_placement_area" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_fixture02_is_in_placement_area">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject.fixture02.is_in_placement_area" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_fixture02_is_in_placement_area">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject.fixture02.is_in_placement_area" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_motor_enabling_is_done">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_motor.enabling_is_done" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_motor_enabling_is_done">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_motor.enabling_is_done" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_motor_referencing_is_done">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_motor.referencing_is_done" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_motor_referencing_is_done">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_motor.referencing_is_done" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_fixture01_do_referencing">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_fixture01.do_referencing" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_fixture01_do_referencing">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_fixture01.do_referencing" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_fixture02_do_referencing">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_fixture02.do_referencing" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_fixture02_do_referencing">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_fixture02.do_referencing" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture01">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_motor.power_enabled.turn_to_fixture01" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_motor_power_enabled_turn_to_fixture01">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_motor.power_enabled.turn_to_fixture01" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_motor_power_enabled_turn_to_fixture02">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject_motor.power_enabled.turn_to_fixture02" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_motor_power_enabled_turn_to_fixture02">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject_motor.power_enabled.turn_to_fixture02" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_safety_is_safe">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.safety.is_safe" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_safety_is_safe">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.safety.is_safe" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="wait_for_workobject_movement_busy_state">
+    <Sequence>
+      <WaitForDigitalInput server_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/wait_for_state" digital_input_names="io_device.01.di_module_04.workobject.movement.busy_state" states="{state}" connection_timeout_ms="200"/>
+    </Sequence>
+  </BehaviorTree>
+  <BehaviorTree ID="is_workobject_movement_busy_state">
+    <Sequence>
+      <EvaluateDigitalInput topic_name="/workcell/controller/digital_inputs_io_device_01_di_module_04/states" input_names="io_device.01.di_module_04.workobject.movement.busy_state" desired_states="1" comparision_methods="eq"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
